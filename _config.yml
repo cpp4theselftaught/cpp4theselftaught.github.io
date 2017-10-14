@@ -14,14 +14,11 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: C++ for the self-taught
-email: rlc@vlinder.ca
+author: Ronald Landheer-Cieslak
 description: > # this means to ignore newlines until "baseurl:"
-  This is the new C++ for the self-taught website, in which we follow the
-  development of the Rubicon ASN.1 parser and learn to develop in C++ by
-  following the example of a veteran developer.
-
-  OK, "veteran" might be a bit of an over statement, but I have been doing
-  this for over two decades now... 
+  C++ for the self-taught:  following the development of the Rubicon ASN.1 
+  parser and learning to develop in C++ by following the example of a veteran
+  developer.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: rlcatvlinder
