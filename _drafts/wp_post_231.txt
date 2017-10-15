@@ -1,0 +1,23 @@
+ID: 251
+post_author: 2921
+post_date: "2017-08-20 13:21:06"
+post_date_gmt: "2017-08-20 17:21:06"
+post_content: "n <pre style='white-space:pre-wrap;width:81ex'>Encode enumerated valuesnnNext step will be to encode bit strings. We&#39;ll need to decide on anrepresentation of those first, though, as the decoder doesn&#39;t have anrepresentation other than a pair of iterators and a bits-to-ignorencount at the moment.nOf course, were don&#39;t actually need anything more than a pair ofniterators and a bits-to-ignore count...</pre>n "
+post_title: "Encode enumerated values"
+post_excerpt: "<pre>Encode enumerated valuesnnNext step will be to encode bit strings. We'll need to decide on anrepresentation of those first, though, as the decoder doesn't have anrepresentation other than a pair of iterators and a bits-to-ignorencount at the moment.nOf course, were don't actually need anything more than a pair ofniterators and a bits-to-ignore count...</pre>"
+post_status: "publish"
+comment_status: "open"
+ping_status: "open"
+post_password: ""
+post_name: "encode-enumerated-values"
+to_ping: ""
+pinged: ""
+post_modified: "2017-08-23 12:17:21"
+post_modified_gmt: "2017-08-23 16:17:21"
+post_content_filtered: ""
+post_parent: 0
+guid: "http://cpp4theselftaught.com/?guid=74fedaf36fc7729c17a198440d7fd0b7"
+menu_order: 0
+post_type: "post"
+post_mime_type: ""
+comment_count: 0

@@ -1,0 +1,23 @@
+ID: 267
+post_author: 2921
+post_date: "2017-08-23 21:26:57"
+post_date_gmt: "2017-08-24 01:26:57"
+post_content: "n <pre style='white-space:pre-wrap;width:81ex'>Refactor encoding and decoding realsnnTake the proof-of-concept code and refactor it into the encoder andndecoder.</pre>n "
+post_title: "Refactor encoding and decoding reals"
+post_excerpt: "n Refactor encoding and decoding realsnnTake the proof-of-concept code and refactor it into the encoder andndecoder.n "
+post_status: "inherit"
+comment_status: "closed"
+ping_status: "closed"
+post_password: ""
+post_name: "266-revision-v1"
+to_ping: ""
+pinged: ""
+post_modified: "2017-08-23 21:26:57"
+post_modified_gmt: "2017-08-24 01:26:57"
+post_content_filtered: ""
+post_parent: 266
+guid: "http://feedwordpress.radgeek.com/?rev=35feff63d009e0b7ba9782d5e4c5bab6"
+menu_order: 0
+post_type: "revision"
+post_mime_type: ""
+comment_count: 0

@@ -1,0 +1,23 @@
+ID: 298
+post_author: 2921
+post_date: "2017-09-27 18:49:18"
+post_date_gmt: "2017-09-27 22:49:18"
+post_content: "n <pre style='white-space:pre-wrap;width:81ex'>Refactor the preprocessor into a parsernnThe state machine has been replaced by an actual parser and a listener,nwhich will output the processed file.nnAlso implement the -o option</pre>n "
+post_title: "Refactor the preprocessor into a parser"
+post_excerpt: "n Refactor the preprocessor into a parsernnThe state machine has been replaced by an actual parser and a listener,nwhich will output the processed file.nnAlso implement the -o optionn "
+post_status: "fwpretired"
+comment_status: "open"
+ping_status: "open"
+post_password: ""
+post_name: "refactor-the-preprocessor-into-a-parser"
+to_ping: ""
+pinged: ""
+post_modified: "2017-09-27 18:49:18"
+post_modified_gmt: "2017-09-27 22:49:18"
+post_content_filtered: ""
+post_parent: 0
+guid: "http://cpp4theselftaught.com/?guid=ba6fd175a6339f590669b08a22745374"
+menu_order: 0
+post_type: "post"
+post_mime_type: ""
+comment_count: 0

@@ -1,0 +1,23 @@
+ID: 221
+post_author: 2921
+post_date: "2017-07-31 23:29:12"
+post_date_gmt: "2017-08-01 03:29:12"
+post_content: "n <pre style='white-space:pre-wrap;width:81ex'>add IDs for all the native typesnnDon&#39;t know which offers I&#39;ll support yet, but at least I won&#39;t have tonscroll on my phone as much</pre>n "
+post_title: "add IDs for all the native types"
+post_excerpt: "<pre>add IDs for all the native typesnnDon't know which offers I'll support yet, but at least I won't have tonscroll on my phone as much</pre>"
+post_status: "inherit"
+comment_status: "closed"
+ping_status: "closed"
+post_password: ""
+post_name: "220-revision-v1"
+to_ping: ""
+pinged: ""
+post_modified: "2017-07-31 23:29:12"
+post_modified_gmt: "2017-08-01 03:29:12"
+post_content_filtered: ""
+post_parent: 220
+guid: "http://feedwordpress.radgeek.com/?rev=04d4a809f90b1c3b409c3c7eb5438410"
+menu_order: 0
+post_type: "revision"
+post_mime_type: ""
+comment_count: 0

@@ -1,0 +1,23 @@
+ID: 64
+post_author: 1
+post_date: "2013-04-02 21:38:04"
+post_date_gmt: "2013-04-03 01:38:04"
+post_content: "Serializing is the act of taking a chink of data an converting it to something that can be communicated -- i.e. some format or other that someone or something else can parse and understand. You do it all the time when you write, or even when you talk: you serialize your thoughts as words that you then serialize as either characters on paper (virtual or dead tree) or as sound.nnParsing is the opposite process of serializing -- also called deserializing.nnAs with words on paper, there is some inaccuracy in serializing when it's floating point numbers being serialized in human-readable form. That is because a computer uses a binary system for counting while a human uses a decimal system. For integers, that doesn't matter because any integer value that can be represented in, say, 32 bits can also be represented in 10 decimal characters and the conversion is fairly straight-forward.nnThe same is not true of floating point values: due to the way floats are implemented, there are some numbers that simply cannot be accurately represented in a <code>float</code>."
+post_title: "Serializing floats"
+post_excerpt: ""
+post_status: "inherit"
+comment_status: "open"
+ping_status: "open"
+post_password: ""
+post_name: "62-revision-2"
+to_ping: ""
+pinged: ""
+post_modified: "2013-04-02 21:38:04"
+post_modified_gmt: "2013-04-03 01:38:04"
+post_content_filtered: ""
+post_parent: 62
+guid: "http://cpp4theselftaught.com/2013/04/62-revision-2/"
+menu_order: 0
+post_type: "revision"
+post_mime_type: ""
+comment_count: 0

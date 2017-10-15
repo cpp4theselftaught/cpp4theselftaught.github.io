@@ -1,0 +1,23 @@
+ID: 288
+post_author: 2921
+post_date: "2017-09-02 23:15:24"
+post_date_gmt: "2017-09-03 03:15:24"
+post_content: ""
+post_title: "With Vim, finish up the last section of clause 12"
+post_excerpt: ""
+post_status: "fwpretired"
+comment_status: "open"
+ping_status: "open"
+post_password: ""
+post_name: "with-vim-finish-up-the-last-section-of-clause-12"
+to_ping: ""
+pinged: ""
+post_modified: "2017-09-02 23:15:24"
+post_modified_gmt: "2017-09-03 03:15:24"
+post_content_filtered: ""
+post_parent: 0
+guid: "http://cpp4theselftaught.com/?guid=eb1a20dd54f45a8e8967bb6246d115b0"
+menu_order: 0
+post_type: "post"
+post_mime_type: ""
+comment_count: 0

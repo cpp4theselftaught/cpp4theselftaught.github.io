@@ -1,0 +1,23 @@
+ID: 166
+post_author: 1
+post_date: "2014-10-18 09:35:32"
+post_date_gmt: "2014-10-18 13:35:32"
+post_content: "n<div class="topsy_widget_data topsy_theme_blue" style="float: right;margin-left: 0.75em; background: url(data:,%7B%20%22url%22%3A%20%22http%253A%252F%252Frlc.vlinder.ca%252Fblog%252F2014%252F10%252Fradical-refactoring-have-the-compiler-to-some-of-the-reviewing%252F%22%2C%20%22shorturl%22%3A%20%22http%3A%2F%2Fbit.ly%2F1oghA2h%22%2C%20%22style%22%3A%20%22big%22%2C%20%22title%22%3A%20%22Radical%20Refactoring%3A%20Have%20the%20compiler%20to%20%28some%20of%29%20the%20reviewing%20%23compiler%20%23compiler-assisted%20reviewing%20%23radical%20refactoring%20%23refactoring%22%20%7D);"></div>n<p>One of the most common sources of bugs is ambiguity: some too-subtle API change that&#8217;s missed in a library update and introduces a subtle bug, that finally only gets found out in the field. My answer to that problem is radical: make changes breaking changes &#8212; make sure the code just won&#8217;t compile unless fixed: the compiler is generally better at finding things you missed than you are.<br />n<span id="more-3346"></span><br />nI recently had to review a chunk of code that ported an application from one platform to a different flavor of that platform. The different flavor in question didn&#8217;t support a given library, but because all flavors were compiled from the same source tree, the headers of the unsupported library were still available. Regrettably the only way to distinguish between one flavor of the platform and another at compile-time was using an <code>#ifdef</code>.</p>n<p>The code was therefore littered with <code>#ifdef</code>s, but the <code>#include</code> directive that included the library&#8217;s header files was still there &#8212; so all the API calls that were no longer supported would still compile (and, in this case, link as well, but do the wrong thing at run-time in oh-so-subtle ways).</p>n<p>In stead of going through all the calls one by one, I asked the developer to surround the <code>#include</code> with an <code>#ifdef</code> and let the compiler check that none of them had been forgotten. In this case, none of them had.</p>n<p>The compiler didn&#8217;t find any sites that had been missed, but had there been any, it would have.</p>n<p>Of course, a better approach would have been to refactor the code so all those <code>#ifdef</code>s would no longer have been necessary. That is what had originally been planned, but sometimes the economic realities off our work catch up to the cleanliness of our code: sometimes refactoring and doing it right <em>right now</em> is simple too expensive. The question then becomes whether the investment into refactoring will return a real added value to the program &#8212; and the answer in this case was &#8220;no&#8221;.</p>nn"
+post_title: "Radical Refactoring: Have the compiler to (some of) the reviewing"
+post_excerpt: "One of the most common sources of bugs is ambiguity: some too-subtle API change that&rsquo;s missed in a library update and introduces a subtle bug, that finally only gets found out in the field. My answer to that problem is &hellip; <a href="http://rlc.vlinder.ca/blog/2014/10/radical-refactoring-have-the-compiler-to-some-of-the-reviewing/">Continue reading <span>&rarr;</span></a>"
+post_status: "inherit"
+comment_status: "closed"
+ping_status: "closed"
+post_password: ""
+post_name: "123-revision-v1"
+to_ping: ""
+pinged: ""
+post_modified: "2014-10-18 09:35:32"
+post_modified_gmt: "2014-10-18 13:35:32"
+post_content_filtered: ""
+post_parent: 123
+guid: "http://feedwordpress.radgeek.com/?rev=2b3fc5023916537eeebb27598dd68e5b"
+menu_order: 0
+post_type: "revision"
+post_mime_type: ""
+comment_count: 0

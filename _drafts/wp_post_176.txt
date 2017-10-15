@@ -1,0 +1,23 @@
+ID: 195
+post_author: 2921
+post_date: "2017-08-13 20:03:43"
+post_date_gmt: "2017-08-14 00:03:43"
+post_content: "n <pre style='white-space:pre-wrap;width:81ex'>Finish up real decoding</pre>n "
+post_title: "Finish up real decoding"
+post_excerpt: "n Finish up real decodingn "
+post_status: "inherit"
+comment_status: "closed"
+ping_status: "closed"
+post_password: ""
+post_name: "194-revision-v1"
+to_ping: ""
+pinged: ""
+post_modified: "2017-08-13 20:03:43"
+post_modified_gmt: "2017-08-14 00:03:43"
+post_content_filtered: ""
+post_parent: 194
+guid: "http://feedwordpress.radgeek.com/?rev=c9779b35bf76f565743176b55b25d334"
+menu_order: 0
+post_type: "revision"
+post_mime_type: ""
+comment_count: 0

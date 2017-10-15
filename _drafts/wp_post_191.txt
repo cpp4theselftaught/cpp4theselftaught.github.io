@@ -1,0 +1,23 @@
+ID: 210
+post_author: 2921
+post_date: "2017-08-04 18:22:43"
+post_date_gmt: "2017-08-04 22:22:43"
+post_content: "n <pre style='white-space:pre-wrap;width:81ex'>A bit of documentationnnMy iPad is out of batteries so I can&#39;t really advance the code rightnnow. A bit of documentation, then.</pre>n "
+post_title: "A bit of documentation"
+post_excerpt: "<pre>A bit of documentationnnMy iPad is out of batteries so I can't really advance the code rightnnow. A bit of documentation, then.</pre>"
+post_status: "publish"
+comment_status: "closed"
+ping_status: "closed"
+post_password: ""
+post_name: "a-bit-of-documentation"
+to_ping: ""
+pinged: ""
+post_modified: "2017-08-14 22:17:13"
+post_modified_gmt: "2017-08-15 02:17:13"
+post_content_filtered: ""
+post_parent: 0
+guid: "http://cpp4theselftaught.com/?guid=673385ab750e03fa3c366264a4cc1509"
+menu_order: 0
+post_type: "post"
+post_mime_type: ""
+comment_count: 0

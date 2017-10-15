@@ -1,0 +1,23 @@
+ID: 213
+post_author: 2921
+post_date: "2017-08-03 14:47:41"
+post_date_gmt: "2017-08-03 18:47:41"
+post_content: "n <pre style='white-space:pre-wrap;width:81ex'>sketch of the start of decoding realsnnI now handle empty input buffers further down the line, because somenvalues can legitimately be zero.nI won&#39;t support base-10 reals because I don&#39;t see why I should.n(Frankly, I&#39;d have a hard time explaining to my wife why I&#39;m sittingnin the car coding, while two of the children are sleeping in the backnseat and she&#39;s shopping for sunglasses, but the answer to thatnquestion shall remain a mystery).nnAdd my iPad is running out of juice, actually parsing and reportingnthe values will have to wait a bit.</pre>n "
+post_title: "sketch of the start of decoding reals"
+post_excerpt: "<pre>sketch of the start of decoding realsnnI now handle empty input buffers further down the line, because somenvalues can legitimately be zero.nI won't support base-10 reals because I don't see why I should.n(Frankly, I'd have a hard time explaining to my wife why I'm sittingnin the car coding, while two of the children are sleeping in the backnseat and she's shopping for sunglasses, but the answer to thatnquestion shall remain a mystery).nnAdd my iPad is running out of juice, actually parsing and reportingnthe values will have to wait a bit.</pre>"
+post_status: "inherit"
+comment_status: "closed"
+ping_status: "closed"
+post_password: ""
+post_name: "212-revision-v1"
+to_ping: ""
+pinged: ""
+post_modified: "2017-08-03 14:47:41"
+post_modified_gmt: "2017-08-03 18:47:41"
+post_content_filtered: ""
+post_parent: 212
+guid: "http://feedwordpress.radgeek.com/?rev=c9add15a53b0fc5931ca0330141e4181"
+menu_order: 0
+post_type: "revision"
+post_mime_type: ""
+comment_count: 0

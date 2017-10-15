@@ -1,0 +1,23 @@
+ID: 273
+post_author: 2921
+post_date: "2017-08-29 17:28:35"
+post_date_gmt: "2017-08-29 21:28:35"
+post_content: "n <pre style='white-space:pre-wrap;width:81ex'>Encode and decode sequences and setsnnDecoding sequences and sets is pretty much a question of trying to keepntrack of where you are in the encoded sequence or set (the onlyndifference between the two being that the order in a sequence isnsignificant whereas it isn&#39;t in a set). Once you run out of input octetsnfor the sequence or set, you&#39;re done with it. At this level, we don&#39;tnneed to know what was expected in terms of the contents of the sequencenor set.nHence, we have a simple pair of stacks: one for the type (sequence ornset) and one for the length of the sequence or set being decoded. Wenallow the stack size to be configured, but the default (16) seemsnreasonable to me. Whenever we decode a sequence or set, we simply pushnthe remaining octets for that sequence or set, and its type, onto thenstacks and wait for them to run out. Because DER doesn&#39;t supportnindeterminate lengths, that&#39;s all we need to do. If the length of thensequence and the length of the contents don&#39;t match up, that willninevitably result in a decoding error. That also addresses then&quot;syntactic poison&quot; Adam (@jadamcrain) pointed out innhttps://twitter.com/jadamcrain/status/891984403706130432nnFor the encoder, things are slightly more painful: because DER doesn&#39;tnallow for indeterminate lengths, we have to know the length of whatevernit is we&#39;re encoding, which in the case of a sequence depends on thencontents of that sequence. The only way I can deal with that at thenmoment is to pretend whoever is calling the encoder will encode into anvector or buffer of some sort, and be able to pass us the iterators intonthat vector or buffer so we can insert it into whatever it is we&#39;renencoding into. This makes sense w.r.t. the way most of these things arengenerally structured, but it does impose a serious limitation on whoevernwould end up using this code.nnNow for some code generation.</pre>n "
+post_title: "Encode and decode sequences and sets"
+post_excerpt: "<pre>Encode and decode sequences and setsnnDecoding sequences and sets is pretty much a question of trying to keepntrack of where you are in the encoded sequence or set (the onlyndifference between the two being that the order in a sequence isnsignificant whereas it isn't in a set). Once you run out of input octetsnfor the sequence or set, you're done with it. At this level, we don'tnneed to know what was expected in terms of the contents of the sequencenor set.nHence, we have a simple pair of stacks: one for the type (sequence ornset) and one for the length of the sequence or set being decoded. Wenallow the stack size to be configured, but the default (16) seemsnreasonable to me. Whenever we decode a sequence or set, we simply pushnthe remaining octets for that sequence or set, and its type, onto thenstacks and wait for them to run out. Because DER doesn't supportnindeterminate lengths, that's all we need to do. If the length of thensequence and the length of the contents don't match up, that willninevitably result in a decoding error. That also addresses then"syntactic poison" Adam (@jadamcrain) pointed out innhttps://twitter.com/jadamcrain/status/891984403706130432nnFor the encoder, things are slightly more painful: because DER doesn'tnallow for indeterminate lengths, we have to know the length of whatevernit is we're encoding, which in the case of a sequence depends on thencontents of that sequence. The only way I can deal with that at thenmoment is to pretend whoever is calling the encoder will encode into anvector or buffer of some sort, and be able to pass us the iterators intonthat vector or buffer so we can insert it into whatever it is we'renencoding into. This makes sense w.r.t. the way most of these things arengenerally structured, but it does impose a serious limitation on whoevernwould end up using this code.nnNow for some code generation.</pre>"
+post_status: "publish"
+comment_status: "open"
+ping_status: "open"
+post_password: ""
+post_name: "encode-and-decode-sequences-and-sets"
+to_ping: ""
+pinged: ""
+post_modified: "2017-08-29 17:28:35"
+post_modified_gmt: "2017-08-29 21:28:35"
+post_content_filtered: ""
+post_parent: 0
+guid: "http://cpp4theselftaught.com/?guid=41fcc497b6c5fc0c1aaf9a7c024decc7"
+menu_order: 0
+post_type: "post"
+post_mime_type: ""
+comment_count: 0

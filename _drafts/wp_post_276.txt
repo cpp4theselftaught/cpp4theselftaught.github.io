@@ -1,0 +1,23 @@
+ID: 301
+post_author: 2921
+post_date: "2017-09-27 20:40:39"
+post_date_gmt: "2017-09-28 00:40:39"
+post_content: "n <pre style='white-space:pre-wrap;width:81ex'>Refactor the preprocessor into a parsernnThe state machine has been replaced by an actual parser and a listener,nwhich will output the processed file.nnAlso implement the -o option</pre>n "
+post_title: "Refactor the preprocessor into a parser"
+post_excerpt: "n Refactor the preprocessor into a parsernnThe state machine has been replaced by an actual parser and a listener,nwhich will output the processed file.nnAlso implement the -o optionn "
+post_status: "inherit"
+comment_status: "closed"
+ping_status: "closed"
+post_password: ""
+post_name: "300-revision-v1"
+to_ping: ""
+pinged: ""
+post_modified: "2017-09-27 20:40:39"
+post_modified_gmt: "2017-09-28 00:40:39"
+post_content_filtered: ""
+post_parent: 300
+guid: "http://feedwordpress.radgeek.com/?rev=b09f4f2a078adb11a901fc195ffb600e"
+menu_order: 0
+post_type: "revision"
+post_mime_type: ""
+comment_count: 0

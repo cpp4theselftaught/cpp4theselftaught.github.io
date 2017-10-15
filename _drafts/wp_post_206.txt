@@ -1,0 +1,23 @@
+ID: 225
+post_author: 2921
+post_date: "2017-07-31 16:52:53"
+post_date_gmt: "2017-07-31 20:52:53"
+post_content: "n <pre style='white-space:pre-wrap;width:81ex'>first chunk of codennProbably won&#39;t compile yet (there&#39;s only so much I can do coding on anniPad on there site there road) but this should parse the type andnlength of a DER-encoded TLV.nValue is next (next pit stop, maybe)</pre>n "
+post_title: "first chunk of code"
+post_excerpt: "<pre>first chunk of codennProbably won't compile yet (there's only so much I can do coding on anniPad on there site there road) but this should parse the type andnlength of a DER-encoded TLV.nValue is next (next pit stop, maybe)</pre>"
+post_status: "inherit"
+comment_status: "closed"
+ping_status: "closed"
+post_password: ""
+post_name: "224-revision-v1"
+to_ping: ""
+pinged: ""
+post_modified: "2017-07-31 16:52:53"
+post_modified_gmt: "2017-07-31 20:52:53"
+post_content_filtered: ""
+post_parent: 224
+guid: "http://feedwordpress.radgeek.com/?rev=02362ef1e898cd0342d4fb09f8a7a456"
+menu_order: 0
+post_type: "revision"
+post_mime_type: ""
+comment_count: 0

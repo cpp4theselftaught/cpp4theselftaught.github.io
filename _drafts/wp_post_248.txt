@@ -1,0 +1,23 @@
+ID: 269
+post_author: 2921
+post_date: "2017-08-24 18:04:27"
+post_date_gmt: "2017-08-24 22:04:27"
+post_content: "n <pre style='width:81ex'>Add missing exceptions.hpp and new .gitignore</pre>n "
+post_title: "Add missing exceptions.hpp and new .gitignore"
+post_excerpt: "n Add missing exceptions.hpp and new .gitignoren "
+post_status: "inherit"
+comment_status: "closed"
+ping_status: "closed"
+post_password: ""
+post_name: "268-revision-v1"
+to_ping: ""
+pinged: ""
+post_modified: "2017-08-24 18:04:27"
+post_modified_gmt: "2017-08-24 22:04:27"
+post_content_filtered: ""
+post_parent: 268
+guid: "http://feedwordpress.radgeek.com/?rev=230b622342a3d2b1271c47a8c036d773"
+menu_order: 0
+post_type: "revision"
+post_mime_type: ""
+comment_count: 0

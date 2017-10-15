@@ -1,0 +1,23 @@
+ID: 10
+post_author: 1
+post_date: "2012-03-29 12:49:39"
+post_date_gmt: "2012-03-29 16:49:39"
+post_content: ""
+post_title: "Auto Draft"
+post_excerpt: ""
+post_status: "inherit"
+comment_status: "open"
+ping_status: "open"
+post_password: ""
+post_name: "9-revision"
+to_ping: ""
+pinged: ""
+post_modified: "2012-03-29 12:49:39"
+post_modified_gmt: "2012-03-29 16:49:39"
+post_content_filtered: ""
+post_parent: 9
+guid: "http://cpp4theselftaught.com/2012/03/9-revision/"
+menu_order: 0
+post_type: "revision"
+post_mime_type: ""
+comment_count: 0

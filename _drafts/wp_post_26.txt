@@ -1,0 +1,23 @@
+ID: 34
+post_author: 1
+post_date: "2012-08-15 21:57:41"
+post_date_gmt: "2012-08-16 01:57:41"
+post_content: "n<div class="topsy_widget_data topsy_theme_blue" style="float: right;margin-left: 0.75em; background: url(data:,%7B%20%22url%22%3A%20%22http%253A%252F%252Frlc.vlinder.ca%252Fblog%252F2012%252F08%252Fhidden-complexity%252F%22%2C%20%22shorturl%22%3A%20%22http%3A%2F%2Fbit.ly%2FOgM8s1%22%2C%20%22style%22%3A%20%22big%22%2C%20%22title%22%3A%20%22Hidden%20complexity%22%20%7D);"></div>n<p>It really surprises me sometimes how much you can have to explain about simple things.<br />n<span id="more-1916"></span><br />nI&#8217;ve written quite a bit of code, most of which is in production today on systems ranging from huge servers tucked away in a bank&#8217;s data center somewhere to tiny embedded devices that might just be hanging from your keychain. Most of that code is written in either C or C++, or some combination of the two and some of it contains from-scratch rewrites of things I&#8217;d written, often slightly differently, elsewhere.</p>n<p>So today, I decided to do another one of those rewrites, but for educational purposes. I&#8217;m not done yet, but I am amazed at how much I&#8217;ll have to <em>explain</em> about the code to make it all clear. The code in question (which is done &#8211; the explaining takes a lot longer) uses various techniques that aren&#8217;t familiar to many programmers, which makes for even more explaining.</p>n<p>In all, I think I&#8217;ll have several hundreds of words for maybe a hundred lines of code&#8230;</p>n<p>A picture is worth a thousand words &#8211; but how much is a class template worth?</p>nn"
+post_title: "Hidden complexity"
+post_excerpt: "It really surprises me sometimes how much you can have to explain about simple things. I&rsquo;ve written quite a bit of code, most of which is in production today on systems ranging from huge servers tucked away in a bank&rsquo;s &hellip; <a href="http://rlc.vlinder.ca/blog/2012/08/hidden-complexity/">Continue reading <span>&rarr;</span></a>"
+post_status: "publish"
+comment_status: "open"
+ping_status: "open"
+post_password: ""
+post_name: "hidden-complexity-2"
+to_ping: ""
+pinged: ""
+post_modified: "2012-08-15 21:57:41"
+post_modified_gmt: "2012-08-16 01:57:41"
+post_content_filtered: ""
+post_parent: 0
+guid: "http://rlc.vlinder.ca/?p=1916"
+menu_order: 0
+post_type: "post"
+post_mime_type: ""
+comment_count: 0

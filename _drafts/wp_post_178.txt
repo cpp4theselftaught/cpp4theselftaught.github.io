@@ -1,0 +1,23 @@
+ID: 197
+post_author: 2921
+post_date: "2017-08-10 13:56:05"
+post_date_gmt: "2017-08-10 17:56:05"
+post_content: "n <pre style='white-space:pre-wrap;width:81ex'>Add documentationnnThe ASN.1 schema language, which defines the enclosed structure innhuman-readable format.nnNote that it&#39;s very unlikely that I&#39;ll implement all of these: therenis very little use for me to define classes or constraints in ASN.1nand there exists very little in terms of real-world use of thesenparticular parts of ASN.1. Moreover, almost everything usefulnspecified in X.68{1,2,3} can be expressed in X.680</pre>n "
+post_title: "Add documentation"
+post_excerpt: "<pre>Add documentationnnThe ASN.1 schema language, which defines the enclosed structure innhuman-readable format.nnNote that it's very unlikely that I'll implement all of these: therenis very little use for me to define classes or constraints in ASN.1nand there exists very little in terms of real-world use of thesenparticular parts of ASN.1. Moreover, almost everything usefulnspecified in X.68{1,2,3} can be expressed in X.680</pre>"
+post_status: "inherit"
+comment_status: "closed"
+ping_status: "closed"
+post_password: ""
+post_name: "196-revision-v1"
+to_ping: ""
+pinged: ""
+post_modified: "2017-08-10 13:56:05"
+post_modified_gmt: "2017-08-10 17:56:05"
+post_content_filtered: ""
+post_parent: 196
+guid: "http://feedwordpress.radgeek.com/?rev=eb8dcb8927aac475d19184ed9833295f"
+menu_order: 0
+post_type: "revision"
+post_mime_type: ""
+comment_count: 0

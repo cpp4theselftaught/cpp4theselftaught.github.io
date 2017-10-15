@@ -1,0 +1,23 @@
+ID: 266
+post_author: 2921
+post_date: "2017-08-23 21:26:57"
+post_date_gmt: "2017-08-24 01:26:57"
+post_content: "n <pre style='white-space:pre-wrap;width:81ex'>Refactor encoding and decoding realsnnTake the proof-of-concept code and refactor it into the encoder andndecoder.</pre>n "
+post_title: "Refactor encoding and decoding reals"
+post_excerpt: "n Refactor encoding and decoding realsnnTake the proof-of-concept code and refactor it into the encoder andndecoder.n "
+post_status: "publish"
+comment_status: "open"
+ping_status: "open"
+post_password: ""
+post_name: "refactor-encoding-and-decoding-reals"
+to_ping: ""
+pinged: ""
+post_modified: "2017-08-23 21:26:57"
+post_modified_gmt: "2017-08-24 01:26:57"
+post_content_filtered: ""
+post_parent: 0
+guid: "http://cpp4theselftaught.com/?guid=5e8afff5dfe10e81605ecf36ddc2f094"
+menu_order: 0
+post_type: "post"
+post_mime_type: ""
+comment_count: 0

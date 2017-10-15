@@ -1,0 +1,23 @@
+ID: 247
+post_author: 0
+post_date: "2017-08-15 23:19:19"
+post_date_gmt: "2017-08-16 03:19:19"
+post_content: "&lt;?xml version=&#039;1.0&#039; encoding=&#039;UTF-8&#039;?&gt;n&lt;!-- generator=&#039;jetpack-5.2.1&#039; --&gt;n&lt;?xml-stylesheet type=&#039;text/xsl&#039; href=&#039;http://cpp4theselftaught.com/image-sitemap.xsl&#039;?&gt;n&lt;urlset xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd&quot; xmlns=&quot;http://www.sitemaps.org/schemas/sitemap/0.9&quot; xmlns:image=&quot;http://www.google.com/schemas/sitemap-image/1.1&quot;&gt;n&lt;url&gt;n &lt;loc&gt;http://cpp4theselftaught.com/header-png/&lt;/loc&gt;n &lt;lastmod&gt;2012-01-11T01:31:56Z&lt;/lastmod&gt;n &lt;image:image&gt;n &lt;image:loc&gt;http://cpp4theselftaught.com/wp-content/uploads/2012/01/header.png&lt;/image:loc&gt;n &lt;image:title&gt;header.png&lt;/image:title&gt;n &lt;/image:image&gt;n&lt;/url&gt;n&lt;url&gt;n &lt;loc&gt;http://cpp4theselftaught.com/cropped-header-png/&lt;/loc&gt;n &lt;lastmod&gt;2014-12-20T19:36:03Z&lt;/lastmod&gt;n &lt;image:image&gt;n &lt;image:loc&gt;http://cpp4theselftaught.com/wp-content/uploads/2012/01/cropped-header.png&lt;/image:loc&gt;n &lt;image:title&gt;cropped-header.png&lt;/image:title&gt;n &lt;/image:image&gt;n&lt;/url&gt;n&lt;url&gt;n &lt;loc&gt;http://cpp4theselftaught.com/cropped-header1-png/&lt;/loc&gt;n &lt;lastmod&gt;2014-12-20T19:43:49Z&lt;/lastmod&gt;n &lt;image:image&gt;n &lt;image:loc&gt;http://cpp4theselftaught.com/wp-content/uploads/2012/01/cropped-header1.png&lt;/image:loc&gt;n &lt;image:title&gt;cropped-header1.png&lt;/image:title&gt;n &lt;/image:image&gt;n&lt;/url&gt;n&lt;url&gt;n &lt;loc&gt;http://cpp4theselftaught.com/2017/08/a-note-on-the-expressiveness-of-code/&lt;/loc&gt;n &lt;lastmod&gt;2017-08-15T23:19:19Z&lt;/lastmod&gt;n &lt;image:image&gt;n &lt;image:loc&gt;http://cpp4theselftaught.com/wp-content/uploads/2017/08/image.jpeg&lt;/image:loc&gt;n &lt;image:title&gt;Expressive code&lt;/image:title&gt;n &lt;image:caption&gt;&lt;![CDATA[Example of expressive code]]&gt;&lt;/image:caption&gt;n &lt;/image:image&gt;n&lt;/url&gt;n&lt;/urlset&gt;n"
+post_title: "image-sitemap-1.xml"
+post_excerpt: ""
+post_status: "trash"
+comment_status: "closed"
+ping_status: "closed"
+post_password: ""
+post_name: "__trashed"
+to_ping: ""
+pinged: ""
+post_modified: "2017-09-14 19:45:55"
+post_modified_gmt: "2017-09-14 23:45:55"
+post_content_filtered: ""
+post_parent: 0
+guid: "http://cpp4theselftaught.com/?p=247"
+menu_order: 0
+post_type: "jp_img_sitemap"
+post_mime_type: ""
+comment_count: 0

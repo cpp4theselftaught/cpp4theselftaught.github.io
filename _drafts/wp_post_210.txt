@@ -1,0 +1,23 @@
+ID: 230
+post_author: 1
+post_date: "2017-08-14 22:53:41"
+post_date_gmt: "2017-08-15 02:53:41"
+post_content: "On July 30, <a href="https://twitter.com/jadamcrain" target="_blank">@jadamcrain</a> tweeted: rnhttps://twitter.com/jadamcrain/status/891732011773284352rnrnOn the surface, he is right, of course: ASN.1 is an overly complex domain-specific language which consists of two major categories of languages: a schema language, specified in X.680, X.681, X.682, and X.683; and a number of encodings. There is, however, one encoding in there that I happen to like for its mix of efficiency and simplicity: it's called DER, for Distinguished Encoding Rules, and is a subset of BER, the Basic Encoding Rules, both of which are defined in X.690 (along with the Canonical Encoding Rules).rnrnDER is a nice encoding in that it consistently encodes values as type-length-value types which the values themselves can be sets or sequences of type-length-value tuples. Values are encoded in their smallest possible representation in whole octets. This makes DER reasonably easy to decode.rnrnHence, I replied with rnhttps://twitter.com/blytkerchan/status/891797275768479744rnI.e. the problem is in the schema language, which defines innumerable string types which can all be represented in the same way (as an <code>std::vector</code>). I as much here: rnhttps://twitter.com/blytkerchan/status/892081101551927296"
+post_title: "Rubicon"
+post_excerpt: ""
+post_status: "inherit"
+comment_status: "closed"
+ping_status: "closed"
+post_password: ""
+post_name: "226-revision-v1"
+to_ping: ""
+pinged: ""
+post_modified: "2017-08-14 22:53:41"
+post_modified_gmt: "2017-08-15 02:53:41"
+post_content_filtered: ""
+post_parent: 226
+guid: "http://cpp4theselftaught.com/2017/08/226-revision-v1/"
+menu_order: 0
+post_type: "revision"
+post_mime_type: ""
+comment_count: 0

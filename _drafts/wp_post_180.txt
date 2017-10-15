@@ -1,0 +1,23 @@
+ID: 199
+post_author: 2921
+post_date: "2017-08-06 14:06:32"
+post_date_gmt: "2017-08-06 18:06:32"
+post_content: "n <pre style='white-space:pre-wrap;width:81ex'>PKI Layer CakennDan Kaminsky (@dakami) et al wrote this and, in our discussion aboutnthe problems with ASN.1, cited it as evidence against ASN.1.nI haven&#39;t analysed the article yet, but at first glance thenASN.1-related issues appear to be implementation issues.</pre>n "
+post_title: "PKI Layer Cake"
+post_excerpt: "<pre>PKI Layer CakennDan Kaminsky (@dakami) et al wrote this and, in our discussion aboutnthe problems with ASN.1, cited it as evidence against ASN.1.nI haven't analysed the article yet, but at first glance thenASN.1-related issues appear to be implementation issues.</pre>"
+post_status: "inherit"
+comment_status: "closed"
+ping_status: "closed"
+post_password: ""
+post_name: "198-revision-v1"
+to_ping: ""
+pinged: ""
+post_modified: "2017-08-06 14:06:32"
+post_modified_gmt: "2017-08-06 18:06:32"
+post_content_filtered: ""
+post_parent: 198
+guid: "http://feedwordpress.radgeek.com/?rev=45eb21149f09305be262f94b7502141a"
+menu_order: 0
+post_type: "revision"
+post_mime_type: ""
+comment_count: 0

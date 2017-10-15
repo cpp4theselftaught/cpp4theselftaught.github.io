@@ -1,0 +1,23 @@
+ID: 264
+post_author: 1
+post_date: "2017-08-23 12:17:21"
+post_date_gmt: "2017-08-23 16:17:21"
+post_content: "n <pre style='white-space:pre-wrap;width:81ex'>encode bit stringsnnRepresenting a bit string as a pair of iterators and an integer shouldnbe sufficient in almost any case, and add we require (because this isna DER encoder) for the entire bit string to be available, this&#39;ll do.nnNote, again, that the expected input iterator is a multi-pass inputniterator: we need to be able to calculate the distance between thenbeginning and the end of the input range.</pre>n "
+post_title: "encode bit strings"
+post_excerpt: "<pre>encode bit stringsnnRepresenting a bit string as a pair of iterators and an integer shouldnbe sufficient in almost any case, and add we require (because this isna DER encoder) for the entire bit string to be available, this'll do.nnNote, again, that the expected input iterator is a multi-pass inputniterator: we need to be able to calculate the distance between thenbeginning and the end of the input range.</pre>"
+post_status: "inherit"
+comment_status: "closed"
+ping_status: "closed"
+post_password: ""
+post_name: "253-revision-v1"
+to_ping: ""
+pinged: ""
+post_modified: "2017-08-23 12:17:21"
+post_modified_gmt: "2017-08-23 16:17:21"
+post_content_filtered: ""
+post_parent: 253
+guid: "http://cpp4theselftaught.com/2017/08/253-revision-v1/"
+menu_order: 0
+post_type: "revision"
+post_mime_type: ""
+comment_count: 0

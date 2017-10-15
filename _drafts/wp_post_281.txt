@@ -1,0 +1,23 @@
+ID: 306
+post_author: 2921
+post_date: "2017-09-29 06:53:14"
+post_date_gmt: "2017-09-29 10:53:14"
+post_content: "n <pre style='white-space:pre-wrap;width:81ex'>Started work on the compilernnI&#39;ve renamed the preprocessor to asn1p to be more consistent with whatnthe compiler will be called (asn1c) and started work on the compiler byncreating a listener to gather information from the parse tree.nnI&#39;ve also added a dependency for my little tracing library (which I&#39;venput on GitHub for this project, and made open source) as that will helpnwith outputting traces etc.</pre>n "
+post_title: "Started work on the compiler"
+post_excerpt: "<pre>Started work on the compilernnI've renamed the preprocessor to asn1p to be more consistent with whatnthe compiler will be called (asn1c) and started work on the compiler byncreating a listener to gather information from the parse tree.nnI've also added a dependency for my little tracing library (which I'venput on GitHub for this project, and made open source) as that will helpnwith outputting traces etc.</pre>"
+post_status: "publish"
+comment_status: "open"
+ping_status: "open"
+post_password: ""
+post_name: "started-work-on-the-compiler"
+to_ping: ""
+pinged: ""
+post_modified: "2017-09-29 06:53:14"
+post_modified_gmt: "2017-09-29 10:53:14"
+post_content_filtered: ""
+post_parent: 0
+guid: "http://cpp4theselftaught.com/?guid=033dfad558a7b354edcac711303e0a37"
+menu_order: 0
+post_type: "post"
+post_mime_type: ""
+comment_count: 0

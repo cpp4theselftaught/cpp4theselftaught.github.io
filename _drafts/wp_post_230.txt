@@ -1,0 +1,23 @@
+ID: 250
+post_author: 2921
+post_date: "2017-08-17 23:31:08"
+post_date_gmt: "2017-08-18 03:31:08"
+post_content: "n <pre style='white-space:pre-wrap;width:81ex'>encode integersnnNote we passed the integer by value so we can compact it withoutnaffecting the calling code.</pre>n "
+post_title: "encode integers"
+post_excerpt: "n encode integersnnNote we passed the integer by value so we can compact it withoutnaffecting the calling code.n "
+post_status: "inherit"
+comment_status: "closed"
+ping_status: "closed"
+post_password: ""
+post_name: "249-revision-v1"
+to_ping: ""
+pinged: ""
+post_modified: "2017-08-17 23:31:08"
+post_modified_gmt: "2017-08-18 03:31:08"
+post_content_filtered: ""
+post_parent: 249
+guid: "http://feedwordpress.radgeek.com/?rev=8bb9a46621f11b8ce69ba6783f4e05e1"
+menu_order: 0
+post_type: "revision"
+post_mime_type: ""
+comment_count: 0

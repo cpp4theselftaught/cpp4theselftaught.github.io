@@ -1,0 +1,23 @@
+ID: 191
+post_author: 2921
+post_date: "2017-08-14 12:54:04"
+post_date_gmt: "2017-08-14 16:54:04"
+post_content: "n <pre style='white-space:pre-wrap;width:81ex'>finish encoding length, octet stringnnWhat better way to use a lunch break than to eat a nice salad and codensomething on your phone?nnInteger can now compact itself to its minimal representation bynremoving leading bytes of nine consecutive bits are zero or there arenonly eight bits and they&#39;re all zero; or if the integer is signed andnnone consecutive bits are one. The latter cannot happen if the formernhas been true, so I check one after the other.nnEncoding the length is pretty straightforward once integers canncompact themselves.</pre>n "
+post_title: "finish encoding length, octet string"
+post_excerpt: "<pre>finish encoding length, octet stringnnWhat better way to use a lunch break than to eat a nice salad and codensomething on your phone?nnInteger can now compact itself to its minimal representation bynremoving leading bytes of nine consecutive bits are zero or there arenonly eight bits and they're all zero; or if the integer is signed andnnone consecutive bits are one. The latter cannot happen if the formernhas been true, so I check one after the other.nnEncoding the length is pretty straightforward once integers canncompact themselves.</pre>"
+post_status: "inherit"
+comment_status: "closed"
+ping_status: "closed"
+post_password: ""
+post_name: "190-revision-v1"
+to_ping: ""
+pinged: ""
+post_modified: "2017-08-14 12:54:04"
+post_modified_gmt: "2017-08-14 16:54:04"
+post_content_filtered: ""
+post_parent: 190
+guid: "http://feedwordpress.radgeek.com/?rev=a8d6ccf3cbec1f41a3e666423c22bc50"
+menu_order: 0
+post_type: "revision"
+post_mime_type: ""
+comment_count: 0

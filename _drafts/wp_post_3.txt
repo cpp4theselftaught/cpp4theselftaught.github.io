@@ -1,0 +1,23 @@
+ID: 4
+post_author: 1
+post_date: "2012-01-11 01:31:56"
+post_date_gmt: "2012-01-11 01:31:56"
+post_content: "http://cpp4theselftaught.com/wp-content/uploads/2012/01/header.png"
+post_title: "header.png"
+post_excerpt: ""
+post_status: "inherit"
+comment_status: "open"
+ping_status: "open"
+post_password: ""
+post_name: "header-png"
+to_ping: ""
+pinged: ""
+post_modified: "2012-01-11 01:31:56"
+post_modified_gmt: "2012-01-11 01:31:56"
+post_content_filtered: ""
+post_parent: 0
+guid: "http://cpp4theselftaught.com/wp-content/uploads/2012/01/header.png"
+menu_order: 0
+post_type: "attachment"
+post_mime_type: "image/png"
+comment_count: 0

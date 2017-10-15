@@ -1,0 +1,23 @@
+ID: 189
+post_author: 2921
+post_date: "2017-08-14 12:54:18"
+post_date_gmt: "2017-08-14 16:54:18"
+post_content: "n <pre style='white-space:pre-wrap;width:81ex'>Merge branch &#39;master&#39; of git@github.com:blytkerchan/-rubicon.git</pre>n "
+post_title: "Merge branch 'master' of git@github.com:blytkerchan/-rubicon.git"
+post_excerpt: "<pre>Merge branch 'master' of git@github.com:blytkerchan/-rubicon.git</pre>"
+post_status: "inherit"
+comment_status: "closed"
+ping_status: "closed"
+post_password: ""
+post_name: "188-revision-v1"
+to_ping: ""
+pinged: ""
+post_modified: "2017-08-14 12:54:18"
+post_modified_gmt: "2017-08-14 16:54:18"
+post_content_filtered: ""
+post_parent: 188
+guid: "http://feedwordpress.radgeek.com/?rev=caa6a836b872457250e899d55e736d00"
+menu_order: 0
+post_type: "revision"
+post_mime_type: ""
+comment_count: 0

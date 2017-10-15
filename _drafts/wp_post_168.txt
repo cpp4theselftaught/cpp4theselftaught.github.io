@@ -1,0 +1,23 @@
+ID: 187
+post_author: 1
+post_date: "2017-08-14 13:54:53"
+post_date_gmt: "2017-08-14 17:54:53"
+post_content: "n<div class="topsy_widget_data topsy_theme_blue" style="float: right;margin-left: 0.75em; background: url(data:,%7B%20%22url%22%3A%20%22http%253A%252F%252Frlc.vlinder.ca%252Fblog%252F2017%252F08%252Fcpp4theselftaught-com-temporarily-down%252F%22%2C%20%22shorturl%22%3A%20%22http%3A%2F%2Fbit.ly%2F2fGnUSy%22%2C%20%22style%22%3A%20%22big%22%2C%20%22title%22%3A%20%22cpp4theselftaught.com%20temporarily%20down%22%20%7D);"></div>n<p>The C++ for the self-taught site is temporarily down for &#8220;unscheduled maintenance&#8221; (i.e. a bug).</p>n<p>I haven&#8217;t had time to look into fixing it yet: I just found out it was misbehaving about an hour ago, during my routine check of my websites. I&#8217;ll try to fix it tonight and update this post when I have news.&nbsp;</p>n<p>If you want to help out: you could donate to my BitCoin address 1JE9wominCU1mw1JtD7JWu8vfYfcGQ9pKj.</p>n<p><strong>Update (21:58 EDT):&nbsp;</strong><br />nAn automatic updates seems to have bugged out and left the site inoperable. According to the logs this happened sometime during my vacation. The site looks OK now &#8212; please let me know if you see anything awry.</p>nn"
+post_title: "cpp4theselftaught.com temporarily down"
+post_excerpt: "The C++ for the self-taught site is temporarily down for &ldquo;unscheduled maintenance&rdquo; (i.e. a bug). I haven&rsquo;t had time to look into fixing it yet: I just found out it was misbehaving about an hour ago, during my routine check &hellip; <a href="http://rlc.vlinder.ca/blog/2017/08/cpp4theselftaught-com-temporarily-down/">Continue reading <span>&rarr;</span></a>"
+post_status: "inherit"
+comment_status: "closed"
+ping_status: "closed"
+post_password: ""
+post_name: "186-revision-v1"
+to_ping: ""
+pinged: ""
+post_modified: "2017-08-14 13:54:53"
+post_modified_gmt: "2017-08-14 17:54:53"
+post_content_filtered: ""
+post_parent: 186
+guid: "http://feedwordpress.radgeek.com/?rev=9a3f19d2577689f6f70d0dbca7e5bc55"
+menu_order: 0
+post_type: "revision"
+post_mime_type: ""
+comment_count: 0

@@ -1,0 +1,23 @@
+ID: 215
+post_author: 2921
+post_date: "2017-08-03 06:58:58"
+post_date_gmt: "2017-08-03 10:58:58"
+post_content: "n <pre style='white-space:pre-wrap;width:81ex'>parse bit stringsnnBecause this is a DER decoder, which means sizes must always bendeterminate, we only parse primitive bit strings.nWe essentially ignore the constructed flag, though, as it&#39;s redundantnwith the indeterminate length on constructed bit strings and I see nonway for an attacker to exploit setting the flash but not using annindeterminate length and some encoders might (not unreasonably, butnwrongly nonetheless) always set the flash on bit strings.nnAnecdotally, this code was written yesterday, in the car, while mynwife was driving :slightly_smiling_face:</pre>n "
+post_title: "parse bit strings"
+post_excerpt: "<pre>parse bit stringsnnBecause this is a DER decoder, which means sizes must always bendeterminate, we only parse primitive bit strings.nWe essentially ignore the constructed flag, though, as it's redundantnwith the indeterminate length on constructed bit strings and I see nonway for an attacker to exploit setting the flash but not using annindeterminate length and some encoders might (not unreasonably, butnwrongly nonetheless) always set the flash on bit strings.nnAnecdotally, this code was written yesterday, in the car, while mynwife was driving :slightly_smiling_face:</pre>"
+post_status: "inherit"
+comment_status: "closed"
+ping_status: "closed"
+post_password: ""
+post_name: "214-revision-v1"
+to_ping: ""
+pinged: ""
+post_modified: "2017-08-03 06:58:58"
+post_modified_gmt: "2017-08-03 10:58:58"
+post_content_filtered: ""
+post_parent: 214
+guid: "http://feedwordpress.radgeek.com/?rev=c9d7579b69b64ed60764b57f21bd4a0a"
+menu_order: 0
+post_type: "revision"
+post_mime_type: ""
+comment_count: 0

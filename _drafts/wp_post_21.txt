@@ -1,0 +1,23 @@
+ID: 27
+post_author: 1
+post_date: "2012-08-19 20:05:34"
+post_date_gmt: "2012-08-20 00:05:34"
+post_content: "Every object in an application has a unique address. In modern systems that address is often an offset in linear virtual memory: a huge sequence of bytes that can be addressed and manipulated by the application's logic."
+post_title: "Alignment"
+post_excerpt: ""
+post_status: "draft"
+comment_status: "open"
+ping_status: "open"
+post_password: ""
+post_name: ""
+to_ping: ""
+pinged: ""
+post_modified: "2012-08-19 20:05:34"
+post_modified_gmt: "2012-08-20 00:05:34"
+post_content_filtered: ""
+post_parent: 0
+guid: "http://cpp4theselftaught.com/?p=27"
+menu_order: 0
+post_type: "post"
+post_mime_type: ""
+comment_count: 0

@@ -1,0 +1,23 @@
+ID: 271
+post_author: 2921
+post_date: "2017-08-24 21:41:00"
+post_date_gmt: "2017-08-25 01:41:00"
+post_content: "n <pre style='width:81ex'>parse octet strings and nullsnnThis remains rather simple in terms of how parsing works. The nextnstep, parsing sequences, will get us to recursive parsing.</pre>n "
+post_title: "parse octet strings and nulls"
+post_excerpt: "n parse octet strings and nullsnnThis remains rather simple in terms of how parsing works. The nextnstep, parsing sequences, will get us to recursive parsing.n "
+post_status: "inherit"
+comment_status: "closed"
+ping_status: "closed"
+post_password: ""
+post_name: "270-revision-v1"
+to_ping: ""
+pinged: ""
+post_modified: "2017-08-24 21:41:00"
+post_modified_gmt: "2017-08-25 01:41:00"
+post_content_filtered: ""
+post_parent: 270
+guid: "http://feedwordpress.radgeek.com/?rev=f0bddf5d09cb565aa4f4fccd7166930e"
+menu_order: 0
+post_type: "revision"
+post_mime_type: ""
+comment_count: 0

@@ -1,0 +1,23 @@
+ID: 160
+post_author: 1
+post_date: "2014-09-05 11:32:31"
+post_date_gmt: "2014-09-05 15:32:31"
+post_content: "n<div class="topsy_widget_data topsy_theme_blue" style="float: right;margin-left: 0.75em; background: url(data:,%7B%20%22url%22%3A%20%22http%253A%252F%252Frlc.vlinder.ca%252Fblog%252F2014%252F09%252Fa-different-take-on-the-optimize-by-puzzle-problem%252F%22%2C%20%22shorturl%22%3A%20%22http%3A%2F%2Fbit.ly%2F1qCn9Wn%22%2C%20%22style%22%3A%20%22big%22%2C%20%22title%22%3A%20%22A%20different%20take%20on%20the%20%5C%22optimize%20by%20puzzle%5C%22%20problem%20%23optimization%20%23puzzle%22%20%7D);"></div>n<p>I explained the problem I presented in my <a href="http://rlc.vlinder.ca/blog/2014/09/optimization-by-puzzle/" >previous post</a> to my wife overt dinner yesterday. She&#8217;s a professor at law and a very intelligent person, but has no notion of set theory, graph theory, or algorithms. I&#8217;m sure many of my colleagues run into similar problems, so I thought I&#8217;d share the analogies I used to explain the problem, and the solution. I didn&#8217;t get to explaining how to arrive at computational complexity, though.</p>n<p><span id="more-3291"></span></p>n<p>Say you have a class full of third-grade children. Their instructions are simple:n<ol>n<li>They cannot tell you their own names &#8212; if you ask, they have permission to kick you in the shins.</li>n<li>Each child has their hands on the shoulder of zero one or two other children.</li>n<li>All the children are facing in the same direction.</li>n<li>Only one child has no hands on their shoulder.</li>n<li>You can ask each child the names of the children whose shoulders they have their hands on, but they will only tell you once &#8212; ask again, they&#8217;ll kick you in the shins &#8212; and you have to address them by their names.</li>n</ol>n<p>You are told the name of one child. How do you get the names of all the children without getting kicked in the shins and which child do you have to get the name of?</p>n<p>Obviously, the child whose name you have to know in advance is the one who doesn&#8217;t have any hands on their shoulders. From there on, you need to keep track of the kids whose names you know but haven&#8217;t asked yet (the <code>to_check</code> set) the kids whose names you know and have addresses (the <code>checked</code> set). At the end, you&#8217;ll have checked everyone, so you group of kids whose names you know but having asked yet is empty.</p>n<p>The third set (the <code>results</code> set) really only exists to make getting the &#8220;right&#8221; part of the set. As shown in the Venn chart below, the set of kids remaining to be checked is the difference between the result set and the (entirely overlapping) set of kids we checked with.</p>n<div style="width: 1034px" class="wp-caption alignright"><a href="http://rlc.vlinder.ca/wp-content/uploads/2014/09/IMG_1202.png"><img src="http://rlc.vlinder.ca/wp-content/uploads/2014/09/IMG_1202.png" alt="Venn chart of the sets" width="1024" height="653" class="size-full" /></a><p class="wp-caption-text">Venn chart of the sets</p></div>n<p>And that&#8217;s exactly what the algorithm does.</p>nn"
+post_title: "A different take on the “optimize by puzzle” problem"
+post_excerpt: "I explained the problem I presented in my previous post to my wife overt dinner yesterday. She&rsquo;s a professor at law and a very intelligent person, but has no notion of set theory, graph theory, or algorithms. I&rsquo;m sure many &hellip; <a href="http://rlc.vlinder.ca/blog/2014/09/a-different-take-on-the-optimize-by-puzzle-problem/">Continue reading <span>&rarr;</span></a>"
+post_status: "inherit"
+comment_status: "closed"
+ping_status: "closed"
+post_password: ""
+post_name: "122-revision-v1"
+to_ping: ""
+pinged: ""
+post_modified: "2014-09-05 11:32:31"
+post_modified_gmt: "2014-09-05 15:32:31"
+post_content_filtered: ""
+post_parent: 122
+guid: "http://feedwordpress.radgeek.com/?rev=6ce7cbd3dc2c2860be9a3623240f6f12"
+menu_order: 0
+post_type: "revision"
+post_mime_type: ""
+comment_count: 0
