@@ -8,5 +8,5 @@ OK, so the C++ for the self-taught website broke down for the fourth time in a r
 
 I have a bit of work to do on the layout of the site, but this should be easier to maintain from my phone than a WordPress site that keeps breaking down.
 
-In any case, this is where I will write down my thoughts on C++ development and why I'm doing what I'm doing in the Rubicon project. I will back-port at least the posts about Rubicon. Older C++ for the self-taught posts are available at [my blog](http://rlc/vlinder.ca).
+In any case, this is where I will write down my thoughts on C++ development and why I'm doing what I'm doing in the Rubicon project. I will back-port at least the posts about Rubicon. Older C++ for the self-taught posts are available at [my blog](http://rlc.vlinder.ca).
 
