@@ -1,0 +1,23 @@
+ID: 219
+post_author: 2921
+post_date: "2017-08-01 12:08:41"
+post_date_gmt: "2017-08-01 16:08:41"
+post_content: "n <pre style='white-space:pre-wrap;width:81ex'>now decodes integers and enumsnnHad a few minutes to kill.nI decided on a large integer representation here, so for integers I&#39;llnjust pass the raw bytes up to the next layer.nFor enums, the representation of choice is int, so that&#39;s what I wentnwith.nOf course, if someone decides to pass key as integers (which theynquite often would) they&#39;ll have to know how to handle those bytesncorrectly (sign extension being the most likely problem they might runninto).</pre>n "
+post_title: "now decodes integers and enums"
+post_excerpt: "<pre>now decodes integers and enumsnnHad a few minutes to kill.nI decided on a large integer representation here, so for integers I'llnjust pass the raw bytes up to the next layer.nFor enums, the representation of choice is int, so that's what I wentnwith.nOf course, if someone decides to pass key as integers (which theynquite often would) they'll have to know how to handle those bytesncorrectly (sign extension being the most likely problem they might runninto).</pre>"
+post_status: "inherit"
+comment_status: "closed"
+ping_status: "closed"
+post_password: ""
+post_name: "218-revision-v1"
+to_ping: ""
+pinged: ""
+post_modified: "2017-08-01 12:08:41"
+post_modified_gmt: "2017-08-01 16:08:41"
+post_content_filtered: ""
+post_parent: 218
+guid: "http://feedwordpress.radgeek.com/?rev=06ca9eb9237a22d3ece1e413ff6e433b"
+menu_order: 0
+post_type: "revision"
+post_mime_type: ""
+comment_count: 0

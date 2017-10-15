@@ -1,0 +1,23 @@
+ID: 208
+post_author: 2921
+post_date: "2017-08-05 10:00:50"
+post_date_gmt: "2017-08-05 14:00:50"
+post_content: "n <pre style='white-space:pre-wrap;width:81ex'>first sketch of an encodernnThe encoder looks like it&#39;ll be a collection of functions that outputnthe to-encode values as DER to an output iterator. An octet string isneasy enough to encode using this scheme: it&#39;s just matter of encodingnthe type, then the length, them copying everything into the output.nThat does mean, though, that I need more than a single-pass inputniterator (because I need to get the distance between the two iteratorsnto get there length).nI might also add a length-and-iterator or length-and-pointer becausenfor non-random-access iterators, getting the distance may be expensive.</pre>n "
+post_title: "first sketch of an encoder"
+post_excerpt: "<pre>first sketch of an encodernnThe encoder looks like it'll be a collection of functions that outputnthe to-encode values as DER to an output iterator. An octet string isneasy enough to encode using this scheme: it's just matter of encodingnthe type, then the length, them copying everything into the output.nThat does mean, though, that I need more than a single-pass inputniterator (because I need to get the distance between the two iteratorsnto get there length).nI might also add a length-and-iterator or length-and-pointer becausenfor non-random-access iterators, getting the distance may be expensive.</pre>"
+post_status: "publish"
+comment_status: "closed"
+ping_status: "closed"
+post_password: ""
+post_name: "first-sketch-of-an-encoder"
+to_ping: ""
+pinged: ""
+post_modified: "2017-08-23 12:17:22"
+post_modified_gmt: "2017-08-23 16:17:22"
+post_content_filtered: ""
+post_parent: 0
+guid: "http://cpp4theselftaught.com/?guid=c70e82364f6468f53491825fc0b5db6a"
+menu_order: 0
+post_type: "post"
+post_mime_type: ""
+comment_count: 0

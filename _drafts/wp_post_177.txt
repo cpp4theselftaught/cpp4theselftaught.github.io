@@ -1,0 +1,23 @@
+ID: 196
+post_author: 2921
+post_date: "2017-08-10 13:56:05"
+post_date_gmt: "2017-08-10 17:56:05"
+post_content: "n <pre style='white-space:pre-wrap;width:81ex'>Add documentationnnThe ASN.1 schema language, which defines the enclosed structure innhuman-readable format.nnNote that it&#39;s very unlikely that I&#39;ll implement all of these: therenis very little use for me to define classes or constraints in ASN.1nand there exists very little in terms of real-world use of thesenparticular parts of ASN.1. Moreover, almost everything usefulnspecified in X.68{1,2,3} can be expressed in X.680</pre>n "
+post_title: "Add documentation"
+post_excerpt: "<pre>Add documentationnnThe ASN.1 schema language, which defines the enclosed structure innhuman-readable format.nnNote that it's very unlikely that I'll implement all of these: therenis very little use for me to define classes or constraints in ASN.1nand there exists very little in terms of real-world use of thesenparticular parts of ASN.1. Moreover, almost everything usefulnspecified in X.68{1,2,3} can be expressed in X.680</pre>"
+post_status: "publish"
+comment_status: "closed"
+ping_status: "closed"
+post_password: ""
+post_name: "add-documentation"
+to_ping: ""
+pinged: ""
+post_modified: "2017-08-23 12:17:21"
+post_modified_gmt: "2017-08-23 16:17:21"
+post_content_filtered: ""
+post_parent: 0
+guid: "http://cpp4theselftaught.com/?guid=ccf3877790bfe3914d1c1bbe18297807"
+menu_order: 0
+post_type: "post"
+post_mime_type: ""
+comment_count: 0

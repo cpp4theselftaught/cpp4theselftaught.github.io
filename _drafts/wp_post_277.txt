@@ -1,0 +1,23 @@
+ID: 302
+post_author: 2921
+post_date: "2017-09-27 20:40:24"
+post_date_gmt: "2017-09-28 00:40:24"
+post_content: "n <pre style='white-space:pre-wrap;width:81ex'>(Fairly) complete ANTLR grammar for ASN.1nnThe grammar was mostly just copied out of X.680 and ANTLRised. To donthis, some minor simplifications were needed removing intermediatenproductions that were probably originally necessary for whateverncompiler compiler the ASN.1 folks used when testing their definitionsn(probably some Yacc variant).nnI also had to change the naming convention used for the productions andnlexical tokens: while I usually don&#39;t care that much about namingnconventions, they exist for parsing purposes (our brains are simplynbetter at parsing than most computer-generated recognizers). ANTLR hasncertain rules about what productions and tokens should look like, so wenneed to follow those rules if we want to use ANTLR.nnI&#39;ll also only be implementing X.680, so any production that referencednthigns that are not part of X.680 are (partly) removed from the grammar.nI&#39;ve further removed stuff that I either won&#39;t implement or would resultnin ambiguities or redundancies in the grammar.</pre>n "
+post_title: "(Fairly) complete ANTLR grammar for ASN.1"
+post_excerpt: "<pre>(Fairly) complete ANTLR grammar for ASN.1nnThe grammar was mostly just copied out of X.680 and ANTLRised. To donthis, some minor simplifications were needed removing intermediatenproductions that were probably originally necessary for whateverncompiler compiler the ASN.1 folks used when testing their definitionsn(probably some Yacc variant).nnI also had to change the naming convention used for the productions andnlexical tokens: while I usually don't care that much about namingnconventions, they exist for parsing purposes (our brains are simplynbetter at parsing than most computer-generated recognizers). ANTLR hasncertain rules about what productions and tokens should look like, so wenneed to follow those rules if we want to use ANTLR.nnI'll also only be implementing X.680, so any production that referencednthigns that are not part of X.680 are (partly) removed from the grammar.nI've further removed stuff that I either won't implement or would resultnin ambiguities or redundancies in the grammar.</pre>"
+post_status: "publish"
+comment_status: "open"
+ping_status: "open"
+post_password: ""
+post_name: "fairly-complete-antlr-grammar-for-asn-1-3"
+to_ping: ""
+pinged: ""
+post_modified: "2017-09-27 20:40:24"
+post_modified_gmt: "2017-09-28 00:40:24"
+post_content_filtered: ""
+post_parent: 0
+guid: "http://cpp4theselftaught.com/?guid=3a5c46b7d558bf9d519afda419cf89c1"
+menu_order: 0
+post_type: "post"
+post_mime_type: ""
+comment_count: 0

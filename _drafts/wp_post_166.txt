@@ -1,0 +1,23 @@
+ID: 257
+post_author: 2921
+post_date: "2017-08-22 23:34:28"
+post_date_gmt: "2017-08-23 03:34:28"
+post_content: "n <pre style='white-space:pre-wrap;width:81ex'>Some proof-of-concept code for realsnnDecoding reals needs some refactoring: while I&#39;ve been reading up onnIEEE-754 representation and the standard C++ functions for floatingnpoint types (and confirming that you should avoid touching this stuff ifnyou can) I&#39;ve come to the conclusion that writing this part of the codenon a tablet or phone is probably not going to lead anywhere, so Indecided to pull out my laptop and get some code running.nnThe Details::Integer class compiles and runs - at least as far as thisnproof of concept is concerned. The POC consists of a brand newnimplementation of dissecting and building floating point values (from orninto double, resp.). I&#39;ve tested it against an independentnimplementation (the calculator on my phone) and arrived at thenconclusion that at least for the two values I&#39;ve tried so far, it isncorrect. That leads me to believe the method itself is correct as well.nnIn this commit, we also add the dependencies we&#39;ll be working with fromnhere on out: CMake for building (and my cmake submodule for the sharednconfiguration stuff) and the exceptions library with its support for myncontract-theory macros (pre-conditions, invariants, etc.).nnI will use the two new functions in the encoder and decoder, replacingnpart of what&#39;s there now.</pre>n "
+post_title: "Some proof-of-concept code for reals"
+post_excerpt: "<pre>Some proof-of-concept code for realsnnDecoding reals needs some refactoring: while I've been reading up onnIEEE-754 representation and the standard C++ functions for floatingnpoint types (and confirming that you should avoid touching this stuff ifnyou can) I've come to the conclusion that writing this part of the codenon a tablet or phone is probably not going to lead anywhere, so Indecided to pull out my laptop and get some code running.nnThe Details::Integer class compiles and runs - at least as far as thisnproof of concept is concerned. The POC consists of a brand newnimplementation of dissecting and building floating point values (from orninto double, resp.). I've tested it against an independentnimplementation (the calculator on my phone) and arrived at thenconclusion that at least for the two values I've tried so far, it isncorrect. That leads me to believe the method itself is correct as well.nnIn this commit, we also add the dependencies we'll be working with fromnhere on out: CMake for building (and my cmake submodule for the sharednconfiguration stuff) and the exceptions library with its support for myncontract-theory macros (pre-conditions, invariants, etc.).nnI will use the two new functions in the encoder and decoder, replacingnpart of what's there now.</pre>"
+post_status: "fwpretired"
+comment_status: "open"
+ping_status: "open"
+post_password: ""
+post_name: "some-proof-of-concept-code-for-reals"
+to_ping: ""
+pinged: ""
+post_modified: "2017-08-23 12:17:21"
+post_modified_gmt: "2017-08-23 16:17:21"
+post_content_filtered: ""
+post_parent: 0
+guid: "http://cpp4theselftaught.com/?guid=d07e651b4807d4160ee07a5b4c0a4c8e"
+menu_order: 0
+post_type: "post"
+post_mime_type: ""
+comment_count: 0

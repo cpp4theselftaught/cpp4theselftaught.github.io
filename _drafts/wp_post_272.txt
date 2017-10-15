@@ -1,0 +1,23 @@
+ID: 297
+post_author: 2921
+post_date: "2017-09-23 20:31:53"
+post_date_gmt: "2017-09-24 00:31:53"
+post_content: "n <pre style='white-space:pre-wrap;width:81ex'>(Fairly) complete ANTLR grammar for ASN.1nnThe grammar was mostly just copied out of X.680 and ANTLRised. To donthis, some minor simplifications were needed removing intermediatenproductions that were probably originally necessary for whateverncompiler compiler the ASN.1 folks used when testing their definitionsn(probably some Yacc variant).nnI also had to change the naming convention used for the productions andnlexical tokens: while I usually don&#39;t care that much about namingnconventions, they exist for parsing purposes (our brains are simplynbetter at parsing than most computer-generated recognizers). ANTLR hasncertain rules about what productions and tokens should look like, so wenneed to follow those rules if we want to use ANTLR.nnI&#39;ll also only be implementing X.680, so any production that referencednthigns that are not part of X.680 are (partly) removed from the grammar.nI&#39;ve further removed stuff that I either won&#39;t implement or would resultnin ambiguities or redundancies in the grammar.</pre>n "
+post_title: "(Fairly) complete ANTLR grammar for ASN.1"
+post_excerpt: "<pre>(Fairly) complete ANTLR grammar for ASN.1nnThe grammar was mostly just copied out of X.680 and ANTLRised. To donthis, some minor simplifications were needed removing intermediatenproductions that were probably originally necessary for whateverncompiler compiler the ASN.1 folks used when testing their definitionsn(probably some Yacc variant).nnI also had to change the naming convention used for the productions andnlexical tokens: while I usually don't care that much about namingnconventions, they exist for parsing purposes (our brains are simplynbetter at parsing than most computer-generated recognizers). ANTLR hasncertain rules about what productions and tokens should look like, so wenneed to follow those rules if we want to use ANTLR.nnI'll also only be implementing X.680, so any production that referencednthigns that are not part of X.680 are (partly) removed from the grammar.nI've further removed stuff that I either won't implement or would resultnin ambiguities or redundancies in the grammar.</pre>"
+post_status: "inherit"
+comment_status: "closed"
+ping_status: "closed"
+post_password: ""
+post_name: "296-revision-v1"
+to_ping: ""
+pinged: ""
+post_modified: "2017-09-23 20:31:53"
+post_modified_gmt: "2017-09-24 00:31:53"
+post_content_filtered: ""
+post_parent: 296
+guid: "http://feedwordpress.radgeek.com/?rev=5bf06c93bb057442e0825b94b5ceda00"
+menu_order: 0
+post_type: "revision"
+post_mime_type: ""
+comment_count: 0

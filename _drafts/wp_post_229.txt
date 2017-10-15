@@ -1,0 +1,23 @@
+ID: 249
+post_author: 2921
+post_date: "2017-08-17 23:31:08"
+post_date_gmt: "2017-08-18 03:31:08"
+post_content: "n <pre style='white-space:pre-wrap;width:81ex'>encode integersnnNote we passed the integer by value so we can compact it withoutnaffecting the calling code.</pre>n "
+post_title: "encode integers"
+post_excerpt: "n encode integersnnNote we passed the integer by value so we can compact it withoutnaffecting the calling code.n "
+post_status: "publish"
+comment_status: "closed"
+ping_status: "closed"
+post_password: ""
+post_name: "encode-integers"
+to_ping: ""
+pinged: ""
+post_modified: "2017-08-23 12:17:21"
+post_modified_gmt: "2017-08-23 16:17:21"
+post_content_filtered: ""
+post_parent: 0
+guid: "http://cpp4theselftaught.com/?guid=d9dcd779982c502766046f22331fc351"
+menu_order: 0
+post_type: "post"
+post_mime_type: ""
+comment_count: 0

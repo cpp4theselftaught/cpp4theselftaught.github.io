@@ -1,0 +1,23 @@
+ID: 236
+post_author: 1
+post_date: "2017-09-14 23:45:54"
+post_date_gmt: "0000-00-00 00:00:00"
+post_content: ""
+post_title: "widget_image"
+post_excerpt: ""
+post_status: "draft"
+comment_status: "closed"
+ping_status: "closed"
+post_password: ""
+post_name: ""
+to_ping: ""
+pinged: ""
+post_modified: "2017-09-14 19:45:54"
+post_modified_gmt: "2017-09-14 23:45:54"
+post_content_filtered: "a:1:{s:12:"_multiwidget";i:1;}"
+post_parent: 0
+guid: "http://cpp4theselftaught.com/?post_type=jetpack_migration&#038;p=236"
+menu_order: 0
+post_type: "jetpack_migration"
+post_mime_type: ""
+comment_count: 0

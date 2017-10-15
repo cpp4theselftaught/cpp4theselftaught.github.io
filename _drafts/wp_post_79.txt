@@ -1,0 +1,23 @@
+ID: 89
+post_author: 1
+post_date: "2013-09-23 18:34:01"
+post_date_gmt: "2013-09-23 22:34:01"
+post_content: "It's been almost two years since the last time I posted an episode for the C++ for the self-taught podcast (November 29<sup>th</sup> 2011). That episode was recorded about two weeks earlier, just before my third child was bord.nnChildren are a pleasure, but they also take a lot of time -- especially the first few years. It's about time to pick up where we left off, though...nnIn the next few weeks, I'll be setting up whatever needs setting up for the podcast and will be aiming for a once-monthly schedule. The format will be pretty much the same as it was before: lots of code, the Chausette project, etc. The code will be hosted on GitHub. Links to follow.nnI'll try to keep you posted!"
+post_title: "Return of the Podcast -- soon"
+post_excerpt: ""
+post_status: "pending"
+comment_status: "open"
+ping_status: "open"
+post_password: ""
+post_name: "return-of-the-podcast-soon"
+to_ping: ""
+pinged: ""
+post_modified: "2014-07-04 21:18:49"
+post_modified_gmt: "2014-07-05 01:18:49"
+post_content_filtered: ""
+post_parent: 0
+guid: "http://cpp4theselftaught.com/?p=89"
+menu_order: 0
+post_type: "post"
+post_mime_type: ""
+comment_count: 0

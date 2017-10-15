@@ -1,0 +1,23 @@
+ID: 126
+post_author: 1
+post_date: "2014-12-20 14:36:03"
+post_date_gmt: "2014-12-20 19:36:03"
+post_content: "http://cpp4theselftaught.com/wp-content/uploads/2012/01/cropped-header.png"
+post_title: "cropped-header.png"
+post_excerpt: ""
+post_status: "inherit"
+comment_status: "open"
+ping_status: "open"
+post_password: ""
+post_name: "cropped-header-png"
+to_ping: ""
+pinged: ""
+post_modified: "2014-12-20 14:36:03"
+post_modified_gmt: "2014-12-20 19:36:03"
+post_content_filtered: ""
+post_parent: 0
+guid: "http://cpp4theselftaught.com/wp-content/uploads/2012/01/cropped-header.png"
+menu_order: 0
+post_type: "attachment"
+post_mime_type: "image/png"
+comment_count: 0

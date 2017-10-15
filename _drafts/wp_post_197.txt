@@ -1,0 +1,23 @@
+ID: 216
+post_author: 2921
+post_date: "2017-08-02 08:16:25"
+post_date_gmt: "2017-08-02 12:16:25"
+post_content: "n <pre style='white-space:pre-wrap;width:81ex'>few minor correctionsnnJust throw EncodingError, don&#39;t put the diagnosis in the type: I don&#39;tnthink anyone will try to catch specific types of encoding errorsnanyway (and it&#39;ll save me creating more exception types).nAlso, the tag is called &quot;end of content&quot;, not &quot;end of input&quot;.</pre>n "
+post_title: "few minor corrections"
+post_excerpt: "<pre>few minor correctionsnnJust throw EncodingError, don't put the diagnosis in the type: I don'tnthink anyone will try to catch specific types of encoding errorsnanyway (and it'll save me creating more exception types).nAlso, the tag is called "end of content", not "end of input".</pre>"
+post_status: "publish"
+comment_status: "closed"
+ping_status: "closed"
+post_password: ""
+post_name: "few-minor-corrections"
+to_ping: ""
+pinged: ""
+post_modified: "2017-08-23 12:19:10"
+post_modified_gmt: "2017-08-23 16:19:10"
+post_content_filtered: ""
+post_parent: 0
+guid: "http://cpp4theselftaught.com/?guid=94d3ad6f2ee8d38bdeaa15d671aef901"
+menu_order: 0
+post_type: "post"
+post_mime_type: ""
+comment_count: 0

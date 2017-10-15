@@ -1,0 +1,23 @@
+ID: 305
+post_author: 2921
+post_date: "2017-09-28 17:29:53"
+post_date_gmt: "2017-09-28 21:29:53"
+post_content: "n <pre style='white-space:pre-wrap;width:81ex'>Simplify and fix the grammarnnThe parser generated from the grammar parses everything into a tree, sonI&#39;ve run it against a real ASN.1 schema (using ANTLR&#39;s grun) and fixednit where fixes were needed.nnI&#39;ve also simplified it a bit to flatten the generated parse tree, whichnwill make our job parsing it quite a bit easier.</pre>n "
+post_title: "Simplify and fix the grammar"
+post_excerpt: "<pre>Simplify and fix the grammarnnThe parser generated from the grammar parses everything into a tree, sonI've run it against a real ASN.1 schema (using ANTLR's grun) and fixednit where fixes were needed.nnI've also simplified it a bit to flatten the generated parse tree, whichnwill make our job parsing it quite a bit easier.</pre>"
+post_status: "inherit"
+comment_status: "closed"
+ping_status: "closed"
+post_password: ""
+post_name: "304-revision-v1"
+to_ping: ""
+pinged: ""
+post_modified: "2017-09-28 17:29:53"
+post_modified_gmt: "2017-09-28 21:29:53"
+post_content_filtered: ""
+post_parent: 304
+guid: "http://feedwordpress.radgeek.com/?rev=8a2c8d73c34d43a8a6b1cf4c0da2a899"
+menu_order: 0
+post_type: "revision"
+post_mime_type: ""
+comment_count: 0

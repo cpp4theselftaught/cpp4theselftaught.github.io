@@ -1,0 +1,23 @@
+ID: 254
+post_author: 2921
+post_date: "2017-08-20 16:06:32"
+post_date_gmt: "2017-08-20 20:06:32"
+post_content: "n <pre style='width:81ex'>encode bit stringsnnRepresenting a bit string as a pair of iterators and an integer shouldnbe sufficient in almost any case, and add we require (because this isna DER encoder) for the entire bit string to be available, this&#039;ll do.nnNote, again, that the expected input iterator is a multi-pass inputniterator: we need to be able to calculate the distance between thenbeginning and the end of the input range.</pre>n "
+post_title: "encode bit strings"
+post_excerpt: "<pre>encode bit stringsnnRepresenting a bit string as a pair of iterators and an integer shouldnbe sufficient in almost any case, and add we require (because this isna DER encoder) for the entire bit string to be available, this'll do.nnNote, again, that the expected input iterator is a multi-pass inputniterator: we need to be able to calculate the distance between thenbeginning and the end of the input range.</pre>"
+post_status: "inherit"
+comment_status: "closed"
+ping_status: "closed"
+post_password: ""
+post_name: "253-revision-v1"
+to_ping: ""
+pinged: ""
+post_modified: "2017-08-20 16:06:32"
+post_modified_gmt: "2017-08-20 20:06:32"
+post_content_filtered: ""
+post_parent: 253
+guid: "http://feedwordpress.radgeek.com/?rev=efa1b76d7437170855ddb6151977b398"
+menu_order: 0
+post_type: "revision"
+post_mime_type: ""
+comment_count: 0

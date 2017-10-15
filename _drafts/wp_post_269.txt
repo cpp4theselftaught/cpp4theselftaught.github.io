@@ -1,0 +1,23 @@
+ID: 287
+post_author: 2921
+post_date: "2017-09-02 21:24:47"
+post_date_gmt: "2017-09-03 01:24:47"
+post_content: "n <pre style='width:81ex'>X.680 sections 11 and 12nnSections 11 and 12 of X.680 describe the lexicographic conventions fornthe ASN.1 schema language: what the lexicographical tokens are, hownidentifiers are formed, etc.nnThis code describes the specified conventions in Bachus-Naur Formn(BNF), as interpreted by the ANTLR tool we&#039;ll be using, except fornsection 12.38, for which I&#039;ll need a better text editor (such as Vi).</pre>n "
+post_title: "X.680 sections 11 and 12"
+post_excerpt: "<pre>X.680 sections 11 and 12nnSections 11 and 12 of X.680 describe the lexicographic conventions fornthe ASN.1 schema language: what the lexicographical tokens are, hownidentifiers are formed, etc.nnThis code describes the specified conventions in Bachus-Naur Formn(BNF), as interpreted by the ANTLR tool we'll be using, except fornsection 12.38, for which I'll need a better text editor (such as Vi).</pre>"
+post_status: "inherit"
+comment_status: "closed"
+ping_status: "closed"
+post_password: ""
+post_name: "286-revision-v1"
+to_ping: ""
+pinged: ""
+post_modified: "2017-09-02 21:24:47"
+post_modified_gmt: "2017-09-03 01:24:47"
+post_content_filtered: ""
+post_parent: 286
+guid: "http://feedwordpress.radgeek.com/?rev=cf25430ec7f3b3bd40b793368022a678"
+menu_order: 0
+post_type: "revision"
+post_mime_type: ""
+comment_count: 0

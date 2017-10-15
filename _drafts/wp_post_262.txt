@@ -1,0 +1,23 @@
+ID: 282
+post_author: 2921
+post_date: "2017-09-01 06:47:09"
+post_date_gmt: "2017-09-01 10:47:09"
+post_content: ""
+post_title: "Rudimentary preprocessor"
+post_excerpt: ""
+post_status: "publish"
+comment_status: "open"
+ping_status: "open"
+post_password: ""
+post_name: "rudimentary-preprocessor"
+to_ping: ""
+pinged: ""
+post_modified: "2017-09-01 06:47:09"
+post_modified_gmt: "2017-09-01 10:47:09"
+post_content_filtered: ""
+post_parent: 0
+guid: "http://cpp4theselftaught.com/?guid=f0d2a773a5fdac371710ae88a62a52fc"
+menu_order: 0
+post_type: "post"
+post_mime_type: ""
+comment_count: 0

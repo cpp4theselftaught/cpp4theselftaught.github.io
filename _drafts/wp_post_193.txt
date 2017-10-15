@@ -1,0 +1,23 @@
+ID: 212
+post_author: 2921
+post_date: "2017-08-03 14:47:41"
+post_date_gmt: "2017-08-03 18:47:41"
+post_content: "n <pre style='white-space:pre-wrap;width:81ex'>sketch of the start of decoding realsnnI now handle empty input buffers further down the line, because somenvalues can legitimately be zero.nI won&#39;t support base-10 reals because I don&#39;t see why I should.n(Frankly, I&#39;d have a hard time explaining to my wife why I&#39;m sittingnin the car coding, while two of the children are sleeping in the backnseat and she&#39;s shopping for sunglasses, but the answer to thatnquestion shall remain a mystery).nnAdd my iPad is running out of juice, actually parsing and reportingnthe values will have to wait a bit.</pre>n "
+post_title: "sketch of the start of decoding reals"
+post_excerpt: "<pre>sketch of the start of decoding realsnnI now handle empty input buffers further down the line, because somenvalues can legitimately be zero.nI won't support base-10 reals because I don't see why I should.n(Frankly, I'd have a hard time explaining to my wife why I'm sittingnin the car coding, while two of the children are sleeping in the backnseat and she's shopping for sunglasses, but the answer to thatnquestion shall remain a mystery).nnAdd my iPad is running out of juice, actually parsing and reportingnthe values will have to wait a bit.</pre>"
+post_status: "publish"
+comment_status: "closed"
+ping_status: "closed"
+post_password: ""
+post_name: "sketch-of-the-start-of-decoding-reals"
+to_ping: ""
+pinged: ""
+post_modified: "2017-08-23 12:19:10"
+post_modified_gmt: "2017-08-23 16:19:10"
+post_content_filtered: ""
+post_parent: 0
+guid: "http://cpp4theselftaught.com/?guid=c496fc05a205c5dc1800b95a59f849f5"
+menu_order: 0
+post_type: "post"
+post_mime_type: ""
+comment_count: 0

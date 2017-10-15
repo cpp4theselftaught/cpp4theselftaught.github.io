@@ -1,0 +1,23 @@
+ID: 268
+post_author: 2921
+post_date: "2017-08-24 18:04:27"
+post_date_gmt: "2017-08-24 22:04:27"
+post_content: "n <pre style='white-space:pre-wrap;width:81ex'>Add missing exceptions.hpp and new .gitignore</pre>n "
+post_title: "Add missing exceptions.hpp and new .gitignore"
+post_excerpt: "n Add missing exceptions.hpp and new .gitignoren "
+post_status: "publish"
+comment_status: "open"
+ping_status: "open"
+post_password: ""
+post_name: "add-missing-exceptions-hpp-and-new-gitignore"
+to_ping: ""
+pinged: ""
+post_modified: "2017-08-24 18:04:27"
+post_modified_gmt: "2017-08-24 22:04:27"
+post_content_filtered: ""
+post_parent: 0
+guid: "http://cpp4theselftaught.com/?guid=951f0628b43a17001e8c12d6c1a4a687"
+menu_order: 0
+post_type: "post"
+post_mime_type: ""
+comment_count: 0

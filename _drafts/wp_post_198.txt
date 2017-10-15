@@ -1,0 +1,23 @@
+ID: 217
+post_author: 2921
+post_date: "2017-08-02 08:16:25"
+post_date_gmt: "2017-08-02 12:16:25"
+post_content: "n <pre style='white-space:pre-wrap;width:81ex'>few minor correctionsnnJust throw EncodingError, don&#39;t put the diagnosis in the type: I don&#39;tnthink anyone will try to catch specific types of encoding errorsnanyway (and it&#39;ll save me creating more exception types).nAlso, the tag is called &quot;end of content&quot;, not &quot;end of input&quot;.</pre>n "
+post_title: "few minor corrections"
+post_excerpt: "<pre>few minor correctionsnnJust throw EncodingError, don't put the diagnosis in the type: I don'tnthink anyone will try to catch specific types of encoding errorsnanyway (and it'll save me creating more exception types).nAlso, the tag is called "end of content", not "end of input".</pre>"
+post_status: "inherit"
+comment_status: "closed"
+ping_status: "closed"
+post_password: ""
+post_name: "216-revision-v1"
+to_ping: ""
+pinged: ""
+post_modified: "2017-08-02 08:16:25"
+post_modified_gmt: "2017-08-02 12:16:25"
+post_content_filtered: ""
+post_parent: 216
+guid: "http://feedwordpress.radgeek.com/?rev=c93d4ff80c3d922f7ac5086d325e5b71"
+menu_order: 0
+post_type: "revision"
+post_mime_type: ""
+comment_count: 0

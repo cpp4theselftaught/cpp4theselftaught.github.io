@@ -1,0 +1,23 @@
+ID: 95
+post_author: 1
+post_date: "2013-12-02 20:15:40"
+post_date_gmt: "2013-12-03 01:15:40"
+post_content: "One of the most common things that need to be done in IT process automation is comparing two files. GNU has had a utility for this for ages -- cmp -- but in the context of this podcast, it may be a good idea to start with as a first project.nn<!--more-->nnThe fun thing about cmp is that it does a lot of things we take for granted: it takes arguments reads files, compares them in memory and reports errors. In C++ there are various ways to do each of these -- as there are various ways to do many things in C++.nnAs we go through the steps of implementing various things in C++, this is something we will see over and over again: there are various ways of doing things, each of which have their own advantages and disadvantages. Sometimes, we will be tempted to jump to the way that is most familiar to us rather than to what the most effective way of implementing may be. This is a temptation we should not always resist: some decisions taken subconsciously make us more productive. However, it is also a temptation that can lead is into territory where our code becomes difficult (or impossible) to maintain. Productivity now may come at the cost of productivity later.nnLet's start with a very simple version of cmp -- one that takes two arguments (both file names) and exits with 0 if both files are the same, 1 if they're different or 2 if there's "trouble".nnEven with such a simple set of requirements, we have more ways we can implement this than we can count in C++! For example, C++ being a superset of C, we could implement it in C.nn<script src="http://ideone.com/e.js/5Nc6TN" type="text/javascript"></script>nnThis has several disadvantages, however: it is less portable than you might think (for example: this code will not compile on a Windows box, because it uses include files that aren't there on Windows) and it handles errors quite badly (we'll get to the reasons for that soon).nnC++ is a superset of C, which means that almost any valid C code is also valid C++. We won't be going the route of learning C++ by learning C first, though: that path is a bit too well-trodden to be interesting. In stead, we will almost exclusively work with code only a C++ compiler will be able to grok.nnAs the code above is written, we will have a look at it, but only to see the three main features of the code: <ol>n <li>a C++ program runs the <code>main</code> function, which returns an <code>int</code> and takes two arguments: the number of arguments passed to the program, and an array of C-style strings representing those arguments. There is always at least one, which is the name of the program itself.</li> <li>C++ has many constructs, including <code>if</code> <code>while</code>, etc. each of which allow for something called <em>flow control</em>, which determines the <em>control flow</em>. That basically means you get to use variables and such to decide which code is executed. All code has to be valid, even if it's never run.n</li>nn <li>C++ uses a <em>preprocessor</em> to prepare the code for compilation. This allows us to insert comments, include one file in another, conditionally compile code, etc.</li>n</ol>nnTry to find traces of each of these in the code above, and note them down."
+post_title: "Comparing files"
+post_excerpt: ""
+post_status: "inherit"
+comment_status: "open"
+ping_status: "open"
+post_password: ""
+post_name: "91-revision-v1"
+to_ping: ""
+pinged: ""
+post_modified: "2013-12-02 20:15:40"
+post_modified_gmt: "2013-12-03 01:15:40"
+post_content_filtered: ""
+post_parent: 91
+guid: "http://cpp4theselftaught.com/2013/12/91-revision-v1/"
+menu_order: 0
+post_type: "revision"
+post_mime_type: ""
+comment_count: 0

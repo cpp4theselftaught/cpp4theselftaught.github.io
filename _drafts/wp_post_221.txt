@@ -1,0 +1,23 @@
+ID: 241
+post_author: 1
+post_date: "2017-08-15 19:16:13"
+post_date_gmt: "2017-08-15 23:16:13"
+post_content: "Example of expressive code"
+post_title: "Expressive code"
+post_excerpt: "Example of expressive code"
+post_status: "inherit"
+comment_status: "open"
+ping_status: "closed"
+post_password: ""
+post_name: "image"
+to_ping: ""
+pinged: ""
+post_modified: "2017-08-15 19:19:19"
+post_modified_gmt: "2017-08-15 23:19:19"
+post_content_filtered: ""
+post_parent: 238
+guid: "http://cpp4theselftaught.com/wp-content/uploads/2017/08/image.jpeg"
+menu_order: 0
+post_type: "attachment"
+post_mime_type: "image/jpeg"
+comment_count: 0

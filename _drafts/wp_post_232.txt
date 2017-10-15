@@ -1,0 +1,23 @@
+ID: 252
+post_author: 2921
+post_date: "2017-08-20 13:21:06"
+post_date_gmt: "2017-08-20 17:21:06"
+post_content: "n <pre style='width:81ex'>Encode enumerated valuesnnNext step will be to encode bit strings. We&#039;ll need to decide on anrepresentation of those first, though, as the decoder doesn&#039;t have anrepresentation other than a pair of iterators and a bits-to-ignorencount at the moment.nOf course, were don&#039;t actually need anything more than a pair ofniterators and a bits-to-ignore count...</pre>n "
+post_title: "Encode enumerated values"
+post_excerpt: "<pre>Encode enumerated valuesnnNext step will be to encode bit strings. We'll need to decide on anrepresentation of those first, though, as the decoder doesn't have anrepresentation other than a pair of iterators and a bits-to-ignorencount at the moment.nOf course, were don't actually need anything more than a pair ofniterators and a bits-to-ignore count...</pre>"
+post_status: "inherit"
+comment_status: "closed"
+ping_status: "closed"
+post_password: ""
+post_name: "251-revision-v1"
+to_ping: ""
+pinged: ""
+post_modified: "2017-08-20 13:21:06"
+post_modified_gmt: "2017-08-20 17:21:06"
+post_content_filtered: ""
+post_parent: 251
+guid: "http://feedwordpress.radgeek.com/?rev=039f88d1f8f308bc18d8a4cc67da354f"
+menu_order: 0
+post_type: "revision"
+post_mime_type: ""
+comment_count: 0

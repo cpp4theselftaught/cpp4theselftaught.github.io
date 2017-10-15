@@ -1,0 +1,23 @@
+ID: 96
+post_author: 1
+post_date: "2013-12-07 15:19:30"
+post_date_gmt: "0000-00-00 00:00:00"
+post_content: "Among other things, C++ is an object-oriented language in which resource management is explicitly handled by the programmer.n<!--more-->nIn this installment, we will look at the ordering which objects are constructed, destructed, and what code is called when.nnAn object is usually an instance of a class. A class if defined using the <code>class</code> or the <code>struct</code> keyword and may has one or more constructors and one destructor. If they are not explicitly written into the code, they are implicitly generated. Aside from plain old data structures (<em>PODs</em>), the implicitly generated constructors and destructors usually don't do what you want them to do, so you're usually better off rolling your own.nnConstructors do not return values: they either succeed, or they fail by throwing an exception. If they fail, the object they were constructing will be deemed not to have been constructed, so the class' destructor <strong>will not be called</strong>.nnThe following code demonstrates this.nn<script src="http://ideone.com/e.js/XnCBp0" type="text/javascript" ></script>nnIt also demonstrates that the sub-object that was fully constructed (the instance of the base class the derived class is derived from) is duly destroyed. Further, it shows that objects that are declared as they are in the example (as local variables) are destroyed in the inverse order of their creation.nnPlay with this code a bit and see if you can find out what order member variables are created and destroyed in. Does if depend on the order in which the constructor of the class of which they are a member initializes them?"
+post_title: "Construction and destruction order"
+post_excerpt: ""
+post_status: "draft"
+comment_status: "open"
+ping_status: "open"
+post_password: ""
+post_name: ""
+to_ping: ""
+pinged: ""
+post_modified: "2013-12-07 15:19:30"
+post_modified_gmt: "2013-12-07 20:19:30"
+post_content_filtered: ""
+post_parent: 0
+guid: "http://cpp4theselftaught.com/?p=96"
+menu_order: 0
+post_type: "post"
+post_mime_type: ""
+comment_count: 0

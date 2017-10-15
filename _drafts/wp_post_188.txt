@@ -1,0 +1,23 @@
+ID: 207
+post_author: 2921
+post_date: "2017-08-05 19:37:08"
+post_date_gmt: "2017-08-05 23:37:08"
+post_content: "n <pre style='white-space:pre-wrap;width:81ex'>start an integer classnnI decided earlier that we wouldn&#39;t decide on the integer representationnclient code would need to use. However, without a normalised integernrepresentation it becomes difficult to encode integers. So the integernrepresentation started here is a minimalist wrapper class for integersnof any size.</pre>n "
+post_title: "start an integer class"
+post_excerpt: "<pre>start an integer classnnI decided earlier that we wouldn't decide on the integer representationnclient code would need to use. However, without a normalised integernrepresentation it becomes difficult to encode integers. So the integernrepresentation started here is a minimalist wrapper class for integersnof any size.</pre>"
+post_status: "inherit"
+comment_status: "closed"
+ping_status: "closed"
+post_password: ""
+post_name: "206-revision-v1"
+to_ping: ""
+pinged: ""
+post_modified: "2017-08-05 19:37:08"
+post_modified_gmt: "2017-08-05 23:37:08"
+post_content_filtered: ""
+post_parent: 206
+guid: "http://feedwordpress.radgeek.com/?rev=00d700ccc27f81e42b6339fa8646a57b"
+menu_order: 0
+post_type: "revision"
+post_mime_type: ""
+comment_count: 0

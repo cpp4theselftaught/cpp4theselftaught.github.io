@@ -1,0 +1,23 @@
+ID: 201
+post_author: 2921
+post_date: "2017-08-05 21:59:19"
+post_date_gmt: "2017-08-06 01:59:19"
+post_content: "n <pre style='white-space:pre-wrap;width:81ex'>continue a bit on decoding realsnnIt&#39;s a nice night to be coding on one&#39;s phone.nnSpecial real values are now decoded, and the entire value is copiedninto the buffer. Now we need to get the number of octets for thenexponent (which we&#39;ll need to check against the octets we actuallynhave) after which we can finish calculating the mantissa.nnI&#39;ve decided on using double to represent reals. I could make thatnconfigurable, but I don&#39;t see much of a reason for doing that.nnThe new Integer class is now used to report the integer value.</pre>n "
+post_title: "continue a bit on decoding reals"
+post_excerpt: "<pre>continue a bit on decoding realsnnIt's a nice night to be coding on one's phone.nnSpecial real values are now decoded, and the entire value is copiedninto the buffer. Now we need to get the number of octets for thenexponent (which we'll need to check against the octets we actuallynhave) after which we can finish calculating the mantissa.nnI've decided on using double to represent reals. I could make thatnconfigurable, but I don't see much of a reason for doing that.nnThe new Integer class is now used to report the integer value.</pre>"
+post_status: "inherit"
+comment_status: "closed"
+ping_status: "closed"
+post_password: ""
+post_name: "200-revision-v1"
+to_ping: ""
+pinged: ""
+post_modified: "2017-08-05 21:59:19"
+post_modified_gmt: "2017-08-06 01:59:19"
+post_content_filtered: ""
+post_parent: 200
+guid: "http://feedwordpress.radgeek.com/?rev=62367284fbafb134a74a93e98231d9e7"
+menu_order: 0
+post_type: "revision"
+post_mime_type: ""
+comment_count: 0

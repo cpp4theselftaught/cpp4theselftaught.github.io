@@ -1,0 +1,23 @@
+ID: 235
+post_author: 2921
+post_date: "2017-08-15 00:08:42"
+post_date_gmt: "2017-08-15 04:08:42"
+post_content: "n <pre style='white-space:pre-wrap;width:81ex'>At a few simple types to the encodernnAdding simple types, such as booleans and end-of-contents, is very easynwith this approach: as long as the output iterator is updated bynanything that writes to the output we simply push whatever we needninto the output by writing to it.nnNote that an output iterator should be smart enough to know when itncan&#39;t write anymore: as back_inserter will do nicely; a pointer into anfixed-size array is dangerous.nnCaveat emptor, as the Romans used to say...</pre>n "
+post_title: "At a few simple types to the encoder"
+post_excerpt: "<pre>At a few simple types to the encodernnAdding simple types, such as booleans and end-of-contents, is very easynwith this approach: as long as the output iterator is updated bynanything that writes to the output we simply push whatever we needninto the output by writing to it.nnNote that an output iterator should be smart enough to know when itncan't write anymore: as back_inserter will do nicely; a pointer into anfixed-size array is dangerous.nnCaveat emptor, as the Romans used to say...</pre>"
+post_status: "inherit"
+comment_status: "closed"
+ping_status: "closed"
+post_password: ""
+post_name: "234-revision-v1"
+to_ping: ""
+pinged: ""
+post_modified: "2017-08-15 00:08:42"
+post_modified_gmt: "2017-08-15 04:08:42"
+post_content_filtered: ""
+post_parent: 234
+guid: "http://feedwordpress.radgeek.com/?rev=8e06ef573ebb63e91ce09c613a14d39e"
+menu_order: 0
+post_type: "revision"
+post_mime_type: ""
+comment_count: 0

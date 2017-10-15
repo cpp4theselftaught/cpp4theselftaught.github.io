@@ -1,0 +1,23 @@
+ID: 285
+post_author: 2921
+post_date: "2017-09-01 06:47:09"
+post_date_gmt: "2017-09-01 10:47:09"
+post_content: ""
+post_title: "Rudimentary preprocessor"
+post_excerpt: ""
+post_status: "inherit"
+comment_status: "closed"
+ping_status: "closed"
+post_password: ""
+post_name: "282-revision-v1"
+to_ping: ""
+pinged: ""
+post_modified: "2017-09-01 06:47:09"
+post_modified_gmt: "2017-09-01 10:47:09"
+post_content_filtered: ""
+post_parent: 282
+guid: "http://feedwordpress.radgeek.com/?rev=1696d17c0d48bf1ce8ca35f66da14626"
+menu_order: 0
+post_type: "revision"
+post_mime_type: ""
+comment_count: 0

@@ -1,0 +1,23 @@
+ID: 203
+post_author: 2921
+post_date: "2017-08-05 20:19:17"
+post_date_gmt: "2017-08-06 00:19:17"
+post_content: "n <pre style='white-space:pre-wrap;width:81ex'>finish up the range constructor for the Integer classnnThe Integer class will probably need a few accessors to make it morenuseable, but the basics are there to be able to encode and decode, Inthink</pre>n "
+post_title: "finish up the range constructor for the Integer class"
+post_excerpt: "n finish up the range constructor for the Integer classnnThe Integer class will probably need a few accessors to make it morenuseable, but the basics are there to be able to encode and decode, Inthinkn "
+post_status: "inherit"
+comment_status: "closed"
+ping_status: "closed"
+post_password: ""
+post_name: "202-revision-v1"
+to_ping: ""
+pinged: ""
+post_modified: "2017-08-05 20:19:17"
+post_modified_gmt: "2017-08-06 00:19:17"
+post_content_filtered: ""
+post_parent: 202
+guid: "http://feedwordpress.radgeek.com/?rev=ca3f9e051f128aa6f0d94c0d57c015cc"
+menu_order: 0
+post_type: "revision"
+post_mime_type: ""
+comment_count: 0

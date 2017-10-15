@@ -1,0 +1,23 @@
+ID: 220
+post_author: 2921
+post_date: "2017-07-31 23:29:12"
+post_date_gmt: "2017-08-01 03:29:12"
+post_content: "n <pre style='white-space:pre-wrap;width:81ex'>add IDs for all the native typesnnDon&#39;t know which offers I&#39;ll support yet, but at least I won&#39;t have tonscroll on my phone as much</pre>n "
+post_title: "add IDs for all the native types"
+post_excerpt: "<pre>add IDs for all the native typesnnDon't know which offers I'll support yet, but at least I won't have tonscroll on my phone as much</pre>"
+post_status: "publish"
+comment_status: "closed"
+ping_status: "closed"
+post_password: ""
+post_name: "add-ids-for-all-the-native-types"
+to_ping: ""
+pinged: ""
+post_modified: "2017-08-23 12:19:10"
+post_modified_gmt: "2017-08-23 16:19:10"
+post_content_filtered: ""
+post_parent: 0
+guid: "http://cpp4theselftaught.com/?guid=5f8223d0dbe626162ac0187732b6b595"
+menu_order: 0
+post_type: "post"
+post_mime_type: ""
+comment_count: 0

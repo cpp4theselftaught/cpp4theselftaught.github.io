@@ -1,0 +1,24 @@
+ID: 307
+post_author: 2921
+post_date: "2017-09-29 06:53:14"
+post_date_gmt: "2017-09-29 10:53:14"
+post_content: "n <pre style='white-space:pre-wrap;width:81ex'>Started work on the compilernnI&#39;ve renamed the preprocessor to asn1p to be more consistent with whatnthe compiler will be called (asn1c) and started work on the compiler byncreating a listener to gather information from the parse tree.nnI&#39;ve also added a dependency for my little tracing library (which I&#39;venput on GitHub for this project, and made open source) as that will helpnwith outputting traces etc.</pre>n "
+post_title: "Started work on the compiler"
+post_excerpt: "<pre>Started work on the compilernnI've renamed the preprocessor to asn1p to be more consistent with whatnthe compiler will be called (asn1c) and started work on the compiler byncreating a listener to gather information from the parse tree.nnI've also added a dependency for my little tracing library (which I'venput on GitHub for this project, and made open source) as that will helpnwith outputting traces etc.</pre>"
+post_status: "inherit"
+comment_status: "closed"
+ping_status: "closed"
+post_password: ""
+post_name: "306-revision-v1"
+to_ping: ""
+pinged: ""
+post_modified: "2017-09-29 06:53:14"
+post_modified_gmt: "2017-09-29 10:53:14"
+post_content_filtered: ""
+post_parent: 306
+guid: "http://feedwordpress.radgeek.com/?rev=d327b3ab7774fad15dcf4172d5adea45"
+menu_order: 0
+post_type: "revision"
+post_mime_type: ""
+comment_count: 0
+...

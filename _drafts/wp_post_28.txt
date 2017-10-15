@@ -1,0 +1,23 @@
+ID: 36
+post_author: 1
+post_date: "2011-12-01 15:11:11"
+post_date_gmt: "2011-12-01 20:11:11"
+post_content: "n<div class="topsy_widget_data topsy_theme_blue" style="float: right;margin-left: 0.75em; background: url(data:,%7B%20%22url%22%3A%20%22http%253A%252F%252Frlc.vlinder.ca%252Fblog%252F2011%252F12%252Fsleep%252F%22%2C%20%22shorturl%22%3A%20%22http%3A%2F%2Fbit.ly%2FtXJO9a%22%2C%20%22style%22%3A%20%22big%22%2C%20%22title%22%3A%20%22Sleep%28...%29%22%20%7D);"></div>n<p>For those of you waiting for the next installment of &#8220;C++ for the self-taught&#8221;: I&#8217;m on parental leave at the moment. The podcast (and the rest of the blog) will be back in a few weeks.</p>nn"
+post_title: "Sleep(…)"
+post_excerpt: "For those of you waiting for the next installment of &ldquo;C++ for the self-taught&rdquo;: I&rsquo;m on parental leave at the moment. The podcast (and the rest of the blog) will be back in a few weeks."
+post_status: "publish"
+comment_status: "open"
+ping_status: "open"
+post_password: ""
+post_name: "sleep"
+to_ping: ""
+pinged: ""
+post_modified: "2011-12-01 15:11:11"
+post_modified_gmt: "2011-12-01 20:11:11"
+post_content_filtered: ""
+post_parent: 0
+guid: "http://rlc.vlinder.ca/blog/2011/12/sleep/"
+menu_order: 0
+post_type: "post"
+post_mime_type: ""
+comment_count: 0

@@ -1,0 +1,23 @@
+ID: 97
+post_author: 1
+post_date: "2013-12-03 10:47:48"
+post_date_gmt: "2013-12-03 15:47:48"
+post_content: "<script src="http://ideone.com/e.js/XnCBp0" type="text/javascript" ></script>"
+post_title: "Construction and destruction order"
+post_excerpt: ""
+post_status: "inherit"
+comment_status: "open"
+ping_status: "open"
+post_password: ""
+post_name: "96-revision-v1"
+to_ping: ""
+pinged: ""
+post_modified: "2013-12-03 10:47:48"
+post_modified_gmt: "2013-12-03 15:47:48"
+post_content_filtered: ""
+post_parent: 96
+guid: "http://cpp4theselftaught.com/2013/12/96-revision-v1/"
+menu_order: 0
+post_type: "revision"
+post_mime_type: ""
+comment_count: 0

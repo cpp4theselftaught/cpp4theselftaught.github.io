@@ -1,0 +1,23 @@
+ID: 237
+post_author: 1
+post_date: "2017-09-14 23:45:54"
+post_date_gmt: "0000-00-00 00:00:00"
+post_content: ""
+post_title: "sidebars_widgets"
+post_excerpt: ""
+post_status: "draft"
+comment_status: "closed"
+ping_status: "closed"
+post_password: ""
+post_name: ""
+to_ping: ""
+pinged: ""
+post_modified: "2017-09-14 19:45:54"
+post_modified_gmt: "2017-09-14 23:45:54"
+post_content_filtered: "a:6:{s:19:"wp_inactive_widgets";a:0:{}s:9:"sidebar-1";a:6:{i:0;s:8:"search-2";i:1;s:14:"recent-posts-2";i:2;s:17:"recent-comments-2";i:3;s:10:"archives-2";i:4;s:12:"categories-2";i:5;s:6:"meta-2";}s:9:"sidebar-2";a:0:{}s:9:"sidebar-3";a:0:{}s:9:"sidebar-4";a:0:{}s:9:"sidebar-5";a:0:{}}"
+post_parent: 0
+guid: "http://cpp4theselftaught.com/?post_type=jetpack_migration&#038;p=237"
+menu_order: 0
+post_type: "jetpack_migration"
+post_mime_type: ""
+comment_count: 0

@@ -1,0 +1,23 @@
+ID: 284
+post_author: 2921
+post_date: "2017-09-01 06:47:09"
+post_date_gmt: "2017-09-01 10:47:09"
+post_content: "n <pre style='width:81ex'>Rudimentary preprocessornnMostly to show how a lexer works.nnA lexer, or lexicographical scanner, reads the input and transforms itninto tokens. In our case, those tokens are begin and end comment (&#039;/*&#039;nand &#039;*/&#039;), Ada-style comment delimiters (&#039;--&#039;), newlines, quotes andncharacters.nWe need the quotes to be able to ignore comments within quotes (though Inhaven&#039;t read X.680 in detail enough yet to know whether that is reallynnecessary).nnNote that this little preprocessor is extremely inefficient: every tokenntext is a string, so we have to construct a string for every singlencharacter we read. That doesn&#039;t matter much at this point, but we willnalmost certainly forego using this preprocessor further along, when wenhave a more interesting way to ignore comments by just parsing them,nthen snipping them out of the parse tree.nThe inefficiency is only due to the way Antlr generalizes tokens (Inwould personally have handed back a pair of iterators into a parsenbuffer, rather than a string, for every token).</pre>n "
+post_title: "Rudimentary preprocessor"
+post_excerpt: "<pre>Rudimentary preprocessornnMostly to show how a lexer works.nnA lexer, or lexicographical scanner, reads the input and transforms itninto tokens. In our case, those tokens are begin and end comment ('/*'nand '*/'), Ada-style comment delimiters ('--'), newlines, quotes andncharacters.nWe need the quotes to be able to ignore comments within quotes (though Inhaven't read X.680 in detail enough yet to know whether that is reallynnecessary).nnNote that this little preprocessor is extremely inefficient: every tokenntext is a string, so we have to construct a string for every singlencharacter we read. That doesn't matter much at this point, but we willnalmost certainly forego using this preprocessor further along, when wenhave a more interesting way to ignore comments by just parsing them,nthen snipping them out of the parse tree.nThe inefficiency is only due to the way Antlr generalizes tokens (Inwould personally have handed back a pair of iterators into a parsenbuffer, rather than a string, for every token).</pre>"
+post_status: "inherit"
+comment_status: "closed"
+ping_status: "closed"
+post_password: ""
+post_name: "283-revision-v1"
+to_ping: ""
+pinged: ""
+post_modified: "2017-09-01 06:47:09"
+post_modified_gmt: "2017-09-01 10:47:09"
+post_content_filtered: ""
+post_parent: 283
+guid: "http://feedwordpress.radgeek.com/?rev=1696d17c0d48bf1ce8ca35f66da14626"
+menu_order: 0
+post_type: "revision"
+post_mime_type: ""
+comment_count: 0
