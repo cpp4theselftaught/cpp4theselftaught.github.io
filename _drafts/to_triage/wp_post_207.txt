@@ -1,23 +1,28 @@
-ID: 226
-post_author: 1
-post_date: "2017-08-14 23:03:21"
-post_date_gmt: "2017-08-15 03:03:21"
-post_content: "On July 30, <a href="https://twitter.com/jadamcrain" target="_blank">@jadamcrain</a> tweeted: rnhttps://twitter.com/jadamcrain/status/891732011773284352rnrnOn the surface, he is right, of course: ASN.1 is an overly complex domain-specific language which consists of two major categories of languages: a schema language, specified in X.680, X.681, X.682, and X.683; and a number of encodings. There is, however, one encoding in there that I happen to like for its mix of efficiency and simplicity: it's called DER, for Distinguished Encoding Rules, and is a subset of BER, the Basic Encoding Rules, both of which are defined in X.690 (along with the Canonical Encoding Rules).rnrnDER is a nice encoding in that it consistently encodes values as type-length-value types which the values themselves can be sets or sequences of type-length-value tuples. Values are encoded in their smallest possible representation in whole octets. This makes DER reasonably easy to decode.rnrnHence, I replied with rnhttps://twitter.com/blytkerchan/status/891797275768479744rnI.e. the problem is in the schema language, which defines innumerable string types which can all be represented in the same way (as an <code>std::vector</code>). I as much here: rnhttps://twitter.com/blytkerchan/status/892081101551927296rnrnBefore I go much father, I should note that the way I debate things often leaves me arguing for the minority position: I challenge the preposition ruthlessly, relentlessly and fearlessly until it either crumbles or survives. ASN.1 implementations are crappy more often than not, DER decoders are no exception. However, these are implementation issues that are not sure to ASN.1's design. Disregarding X.681, X.682, and X.683, XER, BER, CER, and PER, a safe subset of ASN.1, using X.680 and a subset of X.690, exists. rnrnSo, I stopped on the side of the road:rnhttps://twitter.com/blytkerchan/status/892127126392102913rnand started coding. rnrnTwo weeks later, I decided that this might be interesting for this website, so as of now: rn<ul>rn <li>All commits on the master branch will be shown here, with their commit message</li>rn <li>I will occasionally post here to explain a few design decisions</li>rn <li>You can ask questions for particular commits in the comments of the corresponding post.</li>rn</ul>rnrn"
-post_title: "Rubicon"
-post_excerpt: ""
-post_status: "publish"
-comment_status: "closed"
-ping_status: "closed"
-post_password: ""
-post_name: "rubicon"
-to_ping: ""
-pinged: ""
-post_modified: "2017-08-14 23:10:37"
-post_modified_gmt: "2017-08-15 03:10:37"
-post_content_filtered: ""
-post_parent: 0
-guid: "http://cpp4theselftaught.com/?page_id=226"
-menu_order: 0
-post_type: "page"
-post_mime_type: ""
-comment_count: 0
+---
+date: 2017-08-14 23:03:21 -0400
+---
+On July 30, <a href="https://twitter.com/jadamcrain" target="_blank">@jadamcrain</a> tweeted: <blockquote class=“twitter-tweet”><p lang=“en” dir=“ltr”>ASN.1 is a terrible DSL for security oriented message definitions. Way too complex. Security message/file formats must be simpler.</p>&mdash; Code Monkey Hate Bug (@jadamcrain) <a href=“https://twitter.com/jadamcrain/status/891732011773284352?ref_src=twsrc%5Etfw”>July 30, 2017</a></blockquote> <script async src=“//platform.twitter.com/widgets.js” charset=“utf-8”></script>
+
+On the surface, he is right, of course: ASN.1 is an overly complex domain-specific language which consists of two major categories of languages: a schema language, specified in X.680, X.681, X.682, and X.683; and a number of encodings. There is, however, one encoding in there that I happen to like for its mix of efficiency and simplicity: it's called DER, for Distinguished Encoding Rules, and is a subset of BER, the Basic Encoding Rules, both of which are defined in X.690 (along with the Canonical Encoding Rules).
+
+DER is a nice encoding in that it consistently encodes values as type-length-value types which the values themselves can be sets or sequences of type-length-value tuples. Values are encoded in (close to) their smallest possible representation in whole octets. This makes DER reasonably easy to decode.
+
+Hence, I replied with
+https://twitter.com/blytkerchan/status/891797275768479744
+I.e. the problem is in the schema language, which defines innumerable string types which can all be represented in the same way (as an `std::vector`). I as much here: 
+https://twitter.com/blytkerchan/status/892081101551927296
+
+Before I go much father, I should note that the way I debate things often leaves me arguing for the minority position: I challenge the preposition ruthlessly, relentlessly and fearlessly until it either crumbles or survives. ASN.1 implementations are crappy more often than not, DER decoders are no exception. However, these are implementation issues that are not sure to ASN.1's design. Disregarding X.681, X.682, and X.683, XER, BER, CER, and PER, a safe subset of ASN.1, using X.680 and a subset of X.690, exists.
+
+So, I stopped on the side of the road:
+https://twitter.com/blytkerchan/status/892127126392102913
+and started coding.
+
+Two weeks later, I decided that this might be interesting for this website, so as of now:
+
+- All commits on the master branch will be shown here, with their commit message
+
+- I will occasionally post here to explain a few design decisions
+
+- You can ask questions for particular commits in the comments of the corresponding post.
+

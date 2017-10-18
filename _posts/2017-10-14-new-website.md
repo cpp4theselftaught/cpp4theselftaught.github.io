@@ -2,6 +2,7 @@
 layout: post
 title:  "A new website for C++ for the self-taught"
 date:   2017-10-14 12:24:29 -0400
+comments: false
 categories: this-site
 ---
 OK, so the C++ for the self-taught website broke down for the fourth time in a row, and I was pretty much done with that .... (the word you're looking for starts with a 'c' and ends with a 'p' -- don't think anything too vulgar here).
