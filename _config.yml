@@ -46,3 +46,4 @@ plugins:
 #   - vendor/ruby/
 exclude :
   - template
+  - _drafts/will_not_backport/
