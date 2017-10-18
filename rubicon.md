@@ -35,7 +35,7 @@ and started coding.
 
 Two weeks later, I decided that this might be interesting for this website, so as of now:
 
-- All commits on the master branch will be shown here, with their commit message
+- All commits on the master branch will be shown here, with their commit message (updated: due to the way this site is implemented, you'll have to click the "commits" link above to get to the commits)
 
 - I will occasionally post here to explain a few design decisions
 
