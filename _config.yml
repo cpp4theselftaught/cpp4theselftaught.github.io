@@ -20,7 +20,7 @@ description: > # this means to ignore newlines until "baseurl:"
   parser and learning to develop in C++ by following the example of a veteran
   developer.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://cpp4theselftaught.com" # the base hostname & protocol for your site, e.g. http://example.com
+url: "http://cpp4theselftaught.com" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: rlcatvlinder
 github_username:  blytkerchan
 
