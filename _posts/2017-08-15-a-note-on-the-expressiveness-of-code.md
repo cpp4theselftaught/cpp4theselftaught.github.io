@@ -15,7 +15,7 @@ As part of the project, I want to highlight a few things, including how writing 
 
 One example of expressive code can be found in the DER encoder, where the length of the TLV is encoded as a variable-sized integer. 
 
-![Example of expressive code]({{ "/assets/2017-08/expressive_code.jpeg" | absolute__urll }})
+![Example of expressive code]({{ "/assets/2017-08/expressive_code.jpeg" | absolute__url }})
 
 In this code, the `Details::Integer` class encapsulates a particular caveat of DER encoding, in that for unsigned integers the nine leading bits of the encoded integer may never be zero. Similarly, the nine leading bits of a signed integer may neither be all zeroes nor all ones. The `Details::Integer` class uses the C++ type system to know whether a given integer is signed or unsigned and implements both behaviours accordingly. Most of this is hidden from view from its user, but according to the philosophy that you neither pay for what you don't use, not suffer from unexpected implicit side-effects, the `Details::Integer` class has a `compact` method that is explicitly called to trigger this behaviour. An alternative would have been to call `compact` whenever `begin` is called, but that would have added an unexpected side-effect to `begin` in that this method is expected to be an accessor, not a mutator.
 
