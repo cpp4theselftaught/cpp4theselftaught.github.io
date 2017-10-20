@@ -3,6 +3,7 @@ title: "A note on the expressiveness of code"
 date: "2017-08-15 18:41:54 -0400"
 update: "2017-10-19 22:32 -0400"
 layout: post
+comments: true
 ---
 Code should clearly express intent.
 
