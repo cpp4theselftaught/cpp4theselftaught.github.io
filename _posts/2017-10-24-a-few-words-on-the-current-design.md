@@ -1,5 +1,8 @@
 ---
 title: A few words on the current design 
+date: "2017-10-24 12:26 -0400"
+comments: true
+categories: rubicon
 ---
 If you've been following what's going on in the "visitors" topic branch (you probably haven't) you may be wondering what I'm doing. Fear not: there is method to the madness. 
 

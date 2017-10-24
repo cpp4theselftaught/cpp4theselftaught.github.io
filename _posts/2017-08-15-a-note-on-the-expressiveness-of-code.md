@@ -4,6 +4,7 @@ date: "2017-08-15 18:41:54 -0400"
 update: "2017-10-19 22:32 -0400"
 layout: post
 comments: true
+categories: rubicon
 ---
 Code should clearly express intent.
 
