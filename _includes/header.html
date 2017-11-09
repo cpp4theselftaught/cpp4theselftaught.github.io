@@ -4,6 +4,15 @@
 </script>
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 <header class="site-header" role="banner">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-1232488-4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+       gtag('config', 'UA-1232488-4');
+</script>
 
   <div class="wrapper">
     {% assign default_paths = site.pages | map: "path" %}
