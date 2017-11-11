@@ -21,8 +21,9 @@ description: > # this means to ignore newlines until "baseurl:"
   developer.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://cpp4theselftaught.com" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: rlcatvlinder
+twitter_username: cpp4selftaught
 github_username:  blytkerchan
+patreon_username: cpp4theselftaught
 
 disqus:
   shortname: cpp4theselftaught

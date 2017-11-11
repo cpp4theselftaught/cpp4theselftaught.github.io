@@ -33,6 +33,12 @@
             {% include icon-twitter.html username=site.twitter_username %}
           </li>
           {% endif %}
+
+	  {% if site.patreon_username %}
+	  <li>
+		  <a href="https://patreon.com/{{ site.patreon_username | escape }}"><span class="icon"><img src="/assets/patreon-logo.png" width="16" /></span><span class="username">{{ site.patreon_username | escape }}</span></a>
+          </li>
+	  {% endif %}
         </ul>
       </div>
 
