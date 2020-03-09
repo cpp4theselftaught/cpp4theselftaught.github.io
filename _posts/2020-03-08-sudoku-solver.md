@@ -1,6 +1,6 @@
 ---
-title: Sudoku solver: the meta-puzzle
-date: "2020-02-24 22:00 -0400"
+title: Sudoku solver
+date: "2020-03-08 20:53 -0400"
 comments: true
 categories: sudoku-solver
 ---
@@ -124,7 +124,7 @@ I don't intend to push a full-blown pure functional implementation of a sudoku s
 
 ## Addressing rows, columns and cells
 
-![Sudoku highlights]({{ "/assets/2020-02/sudoku-highlights.png" | absolute__url }}){ align:right }
+![Sudoku highlights]({{ "/assets/2020-02/sudoku-highlights.png" | absolute__url }})
 
 To solve any position in the field, we need to know all the values in the same row, the same column, and the same cell.
 
@@ -136,7 +136,7 @@ A column consists of all indices `mod` 9 (so for any value, any other value that
 
 A cell is somewhat more complicated to identify:
 
-![Finding cells]({{ "/assets/2020-02/sudoku-finding-cells.png" | absolute__url }}){ align:right }
+![Finding cells]({{ "/assets/2020-02/sudoku-finding-cells.png" | absolute__url }})
 
 For a position `P_i`, every other position `P_j` is in the same cell if `(i / 3) % 3 == (j / 3) % 3` **and** `i / 27 == j / 27`.
 
@@ -210,7 +210,7 @@ Hence, we now have a function to transform `Field< int >` to `Field< Position >`
 
 Once this function has stopped making progress, we can check each cell to see if there's more than one candidate for a given value. If there is only one, we "promote" the position in question to that value by removing other candidate values from it. To do this, the function is fairly straight-forward: we already have a function to get all the indices in the same cell, and we know the indices of the upper-left corner of every cell:
 
-![Sudoku cells]({{ "/assets/2020-02/sudoku-cells.png" | absolute__url }}){ align:right }
+![Sudoku cells]({{ "/assets/2020-02/sudoku-cells.png" | absolute__url }})
 
 So for each cell we can find the candidates for each number. If there is only one, it must be that number (in which case we preomote it if it didn't already know).
 
@@ -229,3 +229,6 @@ With this algorithm in place, we can solve the vast majority of sudoku puzzles. 
 
 * if the only candidates for a given value on a given row or column are all in the same cell, the value must be on that row or column in that cell. This means we check for such candidates per row and column.
 * If **N** positions in the same row, column or cell hold the same **N** candidate values, all other positions in that row, column or cell can be stripped of those values.
+
+[Check out the code](https://github.com/cpp4theselftaught/sudoku-solver) and try to add some of these yourself!
+
