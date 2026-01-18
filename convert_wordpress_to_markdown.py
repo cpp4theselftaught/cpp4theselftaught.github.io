@@ -116,7 +116,6 @@ def convert_wp_to_jekyll(wp_file, output_dir):
     try:
         date_obj = datetime.strptime(post_date, '%Y-%m-%d %H:%M:%S')
         date_str = date_obj.strftime('%Y-%m-%d')
-        date_time_str = date_obj.strftime('%Y-%m-%d %H:%M:%S %z')
     except ValueError:
         print(f"Warning: Could not parse date '{post_date}' for post '{title}'")
         return None

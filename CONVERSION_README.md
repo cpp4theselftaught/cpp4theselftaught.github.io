@@ -23,13 +23,19 @@ The conversion was performed using the `convert_wordpress_to_markdown.py` script
 
 ## Known Limitations
 
-The WordPress export format used some non-standard character encoding and HTML entity escaping that may result in minor formatting issues in some posts, particularly:
+The WordPress export format used non-standard character encoding where the letter 'n' was used to represent newlines in the exported text. The conversion script attempts to handle this, but due to the complexity of distinguishing between:
+- 'n' as a newline character
+- 'n' as part of a word (like "cannot", "connection", "application")
+- HTML entity encoding (like `&#40;` for parentheses)
 
-- Code blocks may have some character encoding issues
-- Some special characters may not be perfectly converted
-- Complex HTML structures may have been simplified during conversion
+Some formatting issues remain in the converted posts:
 
-These posts serve as a historical record and can be manually corrected as needed.
+- **Standalone 'n' characters**: May appear in some posts as conversion artifacts
+- **Concatenated words**: Words like "connection" may appear as "co ection" 
+- **Code blocks**: May have formatting issues due to complex HTML entity encoding
+- **Special characters**: Some may not be perfectly converted
+
+**Recommendation**: These posts serve as a historical record and baseline. Individual posts can be manually corrected as needed when they are accessed or edited in the future.
 
 ## Usage
 
