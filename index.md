@@ -1,6 +1,17 @@
 ---
-# You don't need to edit this file, it's empty on purpose.
-# Edit theme's home layout instead if you wanna make some changes
-# See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
-layout: home
+layout: placeholder
+title: C++ for the self-taught
 ---
+
+# C++ for the self-taught
+
+<div class="subtitle">Coming Soon</div>
+
+<div class="content">
+  <p>We're working on something new and exciting!</p>
+  <p>This website is currently under construction as we prepare to launch a completely redesigned experience.</p>
+</div>
+
+<div class="timeline">
+  <strong>Expected Launch:</strong> Late 2026 / Early 2027
+</div>
