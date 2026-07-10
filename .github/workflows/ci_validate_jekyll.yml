@@ -17,10 +17,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
 
+      # Gemfile.lock pins BUNDLED WITH 2.0.2, which is incompatible with
+      # Ruby 3.2 (uses String#untaint, removed in Ruby 3.0). Overriding the
+      # bundler version here rather than editing the checked-in lockfile.
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: "3.2"
+          bundler: "2.5"
           bundler-cache: true
 
       - name: Build site
