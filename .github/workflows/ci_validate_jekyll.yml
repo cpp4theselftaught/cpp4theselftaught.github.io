@@ -17,15 +17,23 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
 
-      # Gemfile.lock pins BUNDLED WITH 2.0.2, which is incompatible with
-      # Ruby 3.2 (uses String#untaint, removed in Ruby 3.0). Overriding the
-      # bundler version here rather than editing the checked-in lockfile.
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: "3.2"
-          bundler: "2.5"
-          bundler-cache: true
+
+      # Gemfile.lock pins BUNDLED WITH 2.0.2, which is incompatible with
+      # Ruby 3.2 (uses String#untaint, removed in Ruby 3.0). bundle install
+      # re-reads that pin at runtime regardless of what's pre-installed, and
+      # even `bundle lock` itself would trip the same error before it could
+      # rewrite it - so patch the line directly, in this checkout only,
+      # rather than touching the committed lockfile. 2.5.23 is the default
+      # bundler that ships with this Ruby version.
+      - name: Repin bundler in this checkout only
+        run: sed -i '/^BUNDLED WITH/,+1 s/2\.0\.2/2.5.23/' Gemfile.lock
+
+      - name: Install gems
+        run: bundle install --jobs 4
 
       - name: Build site
         run: bundle exec jekyll build
