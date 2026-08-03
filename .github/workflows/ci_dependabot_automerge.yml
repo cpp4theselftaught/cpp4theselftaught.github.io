@@ -1,32 +1,170 @@
 ---
 name: ci_dependabot_automerge
 
+# This file is maintained in vln-devsecops/guidance, which keeps two
+# byte-identical copies of it - one under .github/workflows/ and one under
+# scaffold/repository-compliance/.github/workflows/ - and fails CI if they
+# drift. Change it there, not in place, and read
+# runbooks/dependabot-automerge.md first: every piece of this workflow is
+# load-bearing and most of it is not obvious.
+
 on:
   pull_request_target:
-    types: [opened, synchronize, reopened, ready_for_review]
+    types: [opened, synchronize, reopened]
 
 permissions:
   contents: write
   pull-requests: write
+  checks: read
 
 jobs:
   automerge:
     runs-on: ubuntu-latest
     if: github.actor == 'dependabot[bot]'
+    env:
+      # Auto-merge is opt-in per repository, and provisioning
+      # DEPENDABOT_AUTOMERGE_TOKEN is what opts in. Without it every step
+      # below skips and the PR is left for a human.
+      #
+      # There is deliberately no fallback to GITHUB_TOKEN. GITHUB_TOKEN can
+      # only approve when the org/repo setting "Allow GitHub Actions to create
+      # and approve pull requests" is enabled, so falling back would make
+      # whether a repo auto-merges depend on an org-level setting nobody sets
+      # per repo - and would silently start auto-merging in repos where that
+      # was never the intent. Dormant is the safe failure here: a human
+      # merging is a fine outcome, an unintended auto-merge is not.
+      #
+      # secrets is not an allowed context in `if:`, so it is surfaced through
+      # job-level env, where it is allowed.
+      HAS_AUTOMERGE_PAT: ${{ secrets.DEPENDABOT_AUTOMERGE_TOKEN != '' }}
     steps:
+      - name: Report that auto-merge is not enabled
+        if: env.HAS_AUTOMERGE_PAT != 'true'
+        run: |
+          echo "::notice::DEPENDABOT_AUTOMERGE_TOKEN is not set for this \
+          repository, so Dependabot auto-merge is disabled and this PR will \
+          not be merged automatically. See runbooks/dependabot-automerge.md \
+          in vln-devsecops/guidance to provision it."
+
       - name: Fetch Dependabot metadata
         id: meta
+        if: env.HAS_AUTOMERGE_PAT == 'true'
         uses: dependabot/fetch-metadata@v3
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Approve and enable auto-merge for minor and patch updates
-        if: >-
-          steps.meta.outputs.update-type == 'version-update:semver-minor' ||
-          steps.meta.outputs.update-type == 'version-update:semver-patch'
+      # `gh pr merge --auto` only actually waits for anything if the default
+      # branch has a required status check configured via branch protection or
+      # a ruleset. Most repos in this portfolio have none - private repos on
+      # the Free plan get a 403 configuring one at all - and with nothing
+      # required, `--auto` merges the moment it is invoked, regardless of
+      # sibling jobs still running or already failed. That is what let
+      # node-dashboard#37 merge past a failing `plan` job. This step gates on
+      # the commit's own check runs instead, so it fails closed on every plan
+      # tier and does not depend on branch-protection config staying correct.
+      - name: Wait for other checks on this commit
+        if: >
+          env.HAS_AUTOMERGE_PAT == 'true' &&
+          (steps.meta.outputs.update-type == 'version-update:semver-minor' ||
+          steps.meta.outputs.update-type == 'version-update:semver-patch')
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          SHA: ${{ github.event.pull_request.head.sha }}
+          RUN_ID: ${{ github.run_id }}
+        run: |
+          set -euo pipefail
+
+          # How long to keep waiting while *no* sibling check has registered
+          # yet. A short fixed sleep is not enough: a queued Windows or
+          # self-hosted runner can take minutes to post its first check run,
+          # and "no checks yet" is indistinguishable from "this repo has no
+          # other CI". Concluding success too early fails OPEN and merges
+          # unguarded, so only give up waiting after this window.
+          settle_seconds=180
+          # Overall bound once checks have appeared.
+          max_seconds=1800
+          interval=15
+
+          started=$SECONDS
+          while :; do
+            elapsed=$((SECONDS - started))
+
+            # --paginate emits one JSON document per page; --slurp collects
+            # them into a single array, so a commit with enough check runs to
+            # paginate does not yield concatenated (invalid) JSON.
+            #
+            # Exclude every job of *this* workflow run rather than matching on
+            # a job name: this job's own check run is posted against the same
+            # head SHA, so without the exclusion it waits on itself until the
+            # timeout and blocks the merge forever. A name match only works
+            # while the job happens to be called "automerge"; details_url is
+            # .../actions/runs/<run_id>/job/<job_id>, which pins the run
+            # exactly and needs no extra token scope.
+            runs_json=$(gh api "repos/$REPO/commits/$SHA/check-runs" --paginate --slurp \
+              | jq --arg run "$RUN_ID" '[.[] | .check_runs[]
+                  | select(((.details_url // "")
+                      | contains("/actions/runs/" + $run + "/")) | not)]')
+
+            total=$(jq 'length' <<<"$runs_json")
+
+            if [ "$total" -eq 0 ]; then
+              if [ "$elapsed" -lt "$settle_seconds" ]; then
+                echo "No sibling check runs on $SHA yet (${elapsed}s elapsed), waiting..."
+                sleep "$interval"
+                continue
+              fi
+              echo "No sibling check runs appeared within ${settle_seconds}s; nothing to gate on."
+              exit 0
+            fi
+
+            incomplete=$(jq '[.[] | select(.status != "completed")] | length' <<<"$runs_json")
+            if [ "$incomplete" -gt 0 ]; then
+              if [ "$elapsed" -ge "$max_seconds" ]; then
+                echo "Timed out after ${elapsed}s with $incomplete check(s) still running:"
+                jq -r '.[] | select(.status != "completed") | "- \(.name): \(.status)"' <<<"$runs_json"
+                exit 1
+              fi
+              echo "$incomplete of $total check(s) still running (${elapsed}s elapsed), waiting..."
+              sleep "$interval"
+              continue
+            fi
+
+            # Anything that is not success/skipped/neutral blocks the merge,
+            # including cancelled, timed_out, action_required and stale.
+            failed=$(jq '[.[] | select(.conclusion != "success"
+              and .conclusion != "skipped"
+              and .conclusion != "neutral")]' <<<"$runs_json")
+            if [ "$(jq 'length' <<<"$failed")" -gt 0 ]; then
+              echo "Refusing to auto-merge; check(s) did not succeed:"
+              jq -r '.[] | "- \(.name): \(.conclusion)"' <<<"$failed"
+              exit 1
+            fi
+
+            echo "All $total other check run(s) on $SHA succeeded."
+            exit 0
+          done
+
+      # Approves with the fine-grained PAT only - see HAS_AUTOMERGE_PAT above
+      # for why there is no GITHUB_TOKEN fallback.
+      #
+      # The trigger is pull_request_target, not pull_request, because a
+      # Dependabot PR running under pull_request cannot read Actions secrets -
+      # the PAT would silently evaluate to empty there, and this workflow
+      # would then skip in every repo rather than only the unprovisioned ones.
+      #
+      # SECURITY: this job must never check out or execute PR head code.
+      # pull_request_target runs with repository secrets against the base
+      # branch; adding actions/checkout of the PR head here would expose those
+      # secrets to code from the PR branch.
+      - name: Approve and enable auto-merge for minor/patch updates
+        if: >
+          env.HAS_AUTOMERGE_PAT == 'true' &&
+          (steps.meta.outputs.update-type == 'version-update:semver-minor' ||
+          steps.meta.outputs.update-type == 'version-update:semver-patch')
         run: |
           gh pr review --approve "$PR_URL"
           gh pr merge --auto --squash "$PR_URL"
         env:
-          GH_TOKEN: ${{ secrets.DEPENDABOT_AUTOMERGE_TOKEN }}
           PR_URL: ${{ github.event.pull_request.html_url }}
+          GH_TOKEN: ${{ secrets.DEPENDABOT_AUTOMERGE_TOKEN }}
