@@ -12,15 +12,31 @@ on:
   pull_request_target:
     types: [opened, synchronize, reopened]
 
+# Read-only. Every write this workflow performs - approving and merging -
+# uses DEPENDABOT_AUTOMERGE_TOKEN, not GITHUB_TOKEN, so GITHUB_TOKEN needs no
+# write scope. That matters more than usual here: the job runs under
+# pull_request_target, so a compromised step or action would otherwise hold a
+# repo-write token.
 permissions:
-  contents: write
-  pull-requests: write
+  contents: read
+  pull-requests: read
   checks: read
 
 jobs:
   automerge:
     runs-on: ubuntu-latest
-    if: github.actor == 'dependabot[bot]'
+    # The PR's author, not github.actor. github.actor is whoever triggered
+    # the event, so on `reopened` - or when anyone else pushes to the branch -
+    # it is that person, this condition goes false, and the job silently does
+    # nothing on a real Dependabot PR. Nothing reports that; it just never
+    # merges.
+    #
+    # This deliberately does NOT decide whether a human has touched the
+    # branch. That is a separate question with a separate answer - see the
+    # commit-authorship check in the merge step - because the two were
+    # previously conflated here, and the accidental protection it gave was
+    # paid for by silent no-ops.
+    if: github.event.pull_request.user.login == 'dependabot[bot]'
     env:
       # Auto-merge is opt-in per repository, and provisioning
       # DEPENDABOT_AUTOMERGE_TOKEN is what opts in. Without it every step
@@ -40,11 +56,16 @@ jobs:
     steps:
       - name: Report that auto-merge is not enabled
         if: env.HAS_AUTOMERGE_PAT != 'true'
-        run: |
-          echo "::notice::DEPENDABOT_AUTOMERGE_TOKEN is not set for this \
-          repository, so Dependabot auto-merge is disabled and this PR will \
-          not be merged automatically. See runbooks/dependabot-automerge.md \
-          in vln-devsecops/guidance to provision it."
+        env:
+          # Folded scalar rather than shell line continuations: a backslash
+          # continuation inside the quoted string embeds the indentation of
+          # each continued line into the notice text.
+          MSG: >-
+            DEPENDABOT_AUTOMERGE_TOKEN is not set for this repository, so
+            Dependabot auto-merge is disabled and this PR will not be merged
+            automatically. See runbooks/dependabot-automerge.md in
+            vln-devsecops/guidance to provision it.
+        run: echo "::notice::$MSG"
 
       - name: Fetch Dependabot metadata
         id: meta
@@ -79,8 +100,7 @@ jobs:
           # yet. A short fixed sleep is not enough: a queued Windows or
           # self-hosted runner can take minutes to post its first check run,
           # and "no checks yet" is indistinguishable from "this repo has no
-          # other CI". Concluding success too early fails OPEN and merges
-          # unguarded, so only give up waiting after this window.
+          # other CI". This window separates the two.
           settle_seconds=180
           # Overall bound once checks have appeared.
           max_seconds=1800
@@ -114,8 +134,21 @@ jobs:
                 sleep "$interval"
                 continue
               fi
-              echo "No sibling check runs appeared within ${settle_seconds}s; nothing to gate on."
-              exit 0
+              # Fail closed. A repo with no check at all on a Dependabot PR
+              # has nothing for this gate to gate on, and merging anyway
+              # would be the original unguarded behaviour wearing a gate's
+              # name - the PR would look checked because this job went green.
+              #
+              # Auto-merge is only supposed to be enabled once a repo has at
+              # least one PR-triggered check (see
+              # runbooks/dependabot-automerge.md), so reaching this point
+              # means the repo is misconfigured. Say so, loudly, rather than
+              # merging and looking correct.
+              echo "No sibling check runs appeared on $SHA within" \
+                   "${settle_seconds}s. Refusing to auto-merge: there is" \
+                   "nothing gating this PR. Add a PR-triggered check, or" \
+                   "remove this workflow."
+              exit 1
             fi
 
             incomplete=$(jq '[.[] | select(.status != "completed")] | length' <<<"$runs_json")
@@ -163,8 +196,48 @@ jobs:
           (steps.meta.outputs.update-type == 'version-update:semver-minor' ||
           steps.meta.outputs.update-type == 'version-update:semver-patch')
         run: |
+          set -euo pipefail
+
+          # The gate above validated $SHA, the head at the time this run
+          # started. If Dependabot has pushed since (a rebase, a follow-up
+          # bump), the PR now points at a commit this run never checked -
+          # and `gh pr merge --auto` applies to the PR, not to a SHA, so it
+          # would enable auto-merge for that unchecked head. Without a
+          # required status check there is nothing downstream to catch it.
+          #
+          # Bail out and let the run triggered by that newer commit do the
+          # gating. Exit 0, not 1: being superseded is normal, not a failure.
+          current=$(gh pr view "$PR_URL" --json headRefOid --jq .headRefOid)
+          if [ "$current" != "$SHA" ]; then
+            echo "PR head moved $SHA -> $current since this run started;" \
+                 "leaving it to the run for $current."
+            exit 0
+          fi
+
+          # Auto-merge covers what Dependabot wrote, and nothing else. If
+          # anyone has pushed onto the branch, the PR now carries changes no
+          # one reviewed and that the "it's only a version bump" reasoning
+          # does not apply to, so hand it back to a human.
+          #
+          # Commits with no resolvable author count as foreign: an unmatched
+          # commit email is exactly what an unexpected push looks like, and
+          # guessing in favour of merging is the wrong way to be wrong.
+          foreign=$(gh pr view "$PR_URL" --json commits --jq '
+            [ .commits[]
+              | (.authors // [])
+              | if length == 0 then ["unknown"] else map(.login // "unknown") end
+              | .[]
+            ] | unique | map(select(. != "dependabot[bot]")) | join(", ")')
+          if [ -n "$foreign" ]; then
+            echo "::notice::PR carries commits authored by: $foreign." \
+                 "Auto-merge only covers Dependabot's own commits, so this" \
+                 "PR is left for human review."
+            exit 0
+          fi
+
           gh pr review --approve "$PR_URL"
           gh pr merge --auto --squash "$PR_URL"
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
+          SHA: ${{ github.event.pull_request.head.sha }}
           GH_TOKEN: ${{ secrets.DEPENDABOT_AUTOMERGE_TOKEN }}
