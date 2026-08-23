@@ -1,0 +1,23 @@
+on:
+  push:
+    branches: [master]        # or the repo's actual default branch — check first
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  baseline:
+    if: github.event_name == 'push'
+    uses: vln-devsecops/actions-sast-sonarqube/.github/workflows/sonar-baseline.yml@v1
+    permissions:
+      contents: read
+    with:
+      baseline-branches: '["master"]'
+
+  pr-scan:
+    if: github.event_name == 'pull_request'
+    uses: vln-devsecops/actions-sast-sonarqube/.github/workflows/sonar-pr.yml@v1
+    permissions:
+      contents: read
+      checks: write
+      pull-requests: write
+      actions: read
