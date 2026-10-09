@@ -12,8 +12,8 @@ on:
   pull_request_target:
     types: [opened, synchronize, reopened]
 
-# Read-only. Every write this workflow performs - approving and merging -
-# uses DEPENDABOT_AUTOMERGE_TOKEN, not GITHUB_TOKEN, so GITHUB_TOKEN needs no
+# Read-only. Every write this workflow performs - approving and merging - uses
+# a GitHub App installation token, not GITHUB_TOKEN, so GITHUB_TOKEN needs no
 # write scope. That matters more than usual here: the job runs under
 # pull_request_target, so a compromised step or action would otherwise hold a
 # repo-write token.
@@ -37,10 +37,17 @@ jobs:
     # previously conflated here, and the accidental protection it gave was
     # paid for by silent no-ops.
     if: github.event.pull_request.user.login == 'dependabot[bot]'
-    env:
-      # Auto-merge is opt-in per repository, and provisioning
-      # DEPENDABOT_AUTOMERGE_TOKEN is what opts in. Without it every step
-      # below skips and the PR is left for a human.
+    steps:
+      # Auto-merge is opt-in per repository, and *installing the App on the
+      # repository* is what opts in. The App id and private key live at org
+      # level, so they are readable everywhere; installation is the per-repo
+      # switch, and it is centrally visible on one App settings page rather
+      # than scattered across N repo secrets.
+      #
+      # Where the App is not installed this call 404s. continue-on-error keeps
+      # that from failing the run: a repo that never opted in has done nothing
+      # wrong, and the token output is simply empty, so every step below skips
+      # and the PR is left for a human.
       #
       # There is deliberately no fallback to GITHUB_TOKEN. GITHUB_TOKEN can
       # only approve when the org/repo setting "Allow GitHub Actions to create
@@ -50,26 +57,36 @@ jobs:
       # was never the intent. Dormant is the safe failure here: a human
       # merging is a fine outcome, an unintended auto-merge is not.
       #
-      # secrets is not an allowed context in `if:`, so it is surfaced through
-      # job-level env, where it is allowed.
-      HAS_AUTOMERGE_PAT: ${{ secrets.DEPENDABOT_AUTOMERGE_TOKEN != '' }}
-    steps:
+      # permission-* narrows the installation token to what this workflow
+      # actually does. The App may be granted more; this token will not carry
+      # it, which matters because the job runs under pull_request_target.
+      - name: Mint a GitHub App installation token
+        id: app-token
+        continue-on-error: true
+        uses: actions/create-github-app-token@v3
+        with:
+          app-id: ${{ vars.DEPENDABOT_AUTOMERGE_APP_ID }}
+          private-key: ${{ secrets.DEPENDABOT_AUTOMERGE_APP_PRIVATE_KEY }}
+          permission-contents: write
+          permission-pull-requests: write
+
       - name: Report that auto-merge is not enabled
-        if: env.HAS_AUTOMERGE_PAT != 'true'
+        if: steps.app-token.outputs.token == ''
         env:
           # Folded scalar rather than shell line continuations: a backslash
           # continuation inside the quoted string embeds the indentation of
           # each continued line into the notice text.
           MSG: >-
-            DEPENDABOT_AUTOMERGE_TOKEN is not set for this repository, so
+            No App installation token could be minted for this repository, so
             Dependabot auto-merge is disabled and this PR will not be merged
-            automatically. See runbooks/dependabot-automerge.md in
-            vln-devsecops/guidance to provision it.
+            automatically. Usually that means the auto-merge App is not
+            installed here, which is the opt-in switch. See
+            runbooks/dependabot-automerge.md in vln-devsecops/guidance.
         run: echo "::notice::$MSG"
 
       - name: Fetch Dependabot metadata
         id: meta
-        if: env.HAS_AUTOMERGE_PAT == 'true'
+        if: steps.app-token.outputs.token != ''
         uses: dependabot/fetch-metadata@v3
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -85,7 +102,7 @@ jobs:
       # tier and does not depend on branch-protection config staying correct.
       - name: Wait for other checks on this commit
         if: >
-          env.HAS_AUTOMERGE_PAT == 'true' &&
+          steps.app-token.outputs.token != '' &&
           (steps.meta.outputs.update-type == 'version-update:semver-minor' ||
           steps.meta.outputs.update-type == 'version-update:semver-patch')
         env:
@@ -178,21 +195,27 @@ jobs:
             exit 0
           done
 
-      # Approves with the fine-grained PAT only - see HAS_AUTOMERGE_PAT above
-      # for why there is no GITHUB_TOKEN fallback.
+      # Approves with the App installation token only - see the minting step
+      # above for why there is no GITHUB_TOKEN fallback.
+      #
+      # The approving identity is the App, not a person. With a PAT every
+      # auto-merged PR carried its owner's name on the approval, which is a
+      # misleading audit trail for a control whose whole purpose is recording
+      # who vouched for a change.
       #
       # The trigger is pull_request_target, not pull_request, because a
       # Dependabot PR running under pull_request cannot read Actions secrets -
-      # the PAT would silently evaluate to empty there, and this workflow
-      # would then skip in every repo rather than only the unprovisioned ones.
+      # the private key would silently evaluate to empty there, and this
+      # workflow would then skip in every repo rather than only the
+      # uninstalled ones.
       #
       # SECURITY: this job must never check out or execute PR head code.
       # pull_request_target runs with repository secrets against the base
       # branch; adding actions/checkout of the PR head here would expose those
       # secrets to code from the PR branch.
-      - name: Approve and enable auto-merge for minor/patch updates
+      - name: Approve and merge minor/patch updates
         if: >
-          env.HAS_AUTOMERGE_PAT == 'true' &&
+          steps.app-token.outputs.token != '' &&
           (steps.meta.outputs.update-type == 'version-update:semver-minor' ||
           steps.meta.outputs.update-type == 'version-update:semver-patch')
         run: |
@@ -235,9 +258,25 @@ jobs:
             exit 0
           fi
 
+          # Not `gh pr merge --auto`: that calls the GraphQL
+          # enablePullRequestAutoMerge mutation, and as of GitHub's
+          # undocumented 2026-03-25 behaviour change that mutation refuses to
+          # activate unless every check on the commit is already passing -
+          # including this job's own check run, which is still `in_progress`
+          # at this exact point because the job that would report it
+          # completed hasn't finished yet. That is a permanent, structural
+          # deadlock, not a race that clears on retry: it fails every time
+          # with "GraphQL: Pull request Pull request is in unstable status
+          # (enablePullRequestAutoMerge)" (see terraform-modules#203 for a
+          # concrete run of this).
+          #
+          # It is also unnecessary. `--auto` exists to wait for checks that
+          # are not yet green; the polling step above already did that
+          # waiting by hand. So merge directly instead of asking GitHub to
+          # enable a wait that has no reason to be running.
           gh pr review --approve "$PR_URL"
-          gh pr merge --auto --squash "$PR_URL"
+          gh pr merge --squash "$PR_URL"
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
           SHA: ${{ github.event.pull_request.head.sha }}
-          GH_TOKEN: ${{ secrets.DEPENDABOT_AUTOMERGE_TOKEN }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
