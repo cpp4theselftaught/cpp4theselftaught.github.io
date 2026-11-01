@@ -24,10 +24,13 @@ permissions:
 
 jobs:
   automerge:
-    # littlemonarch is only registered in these orgs; elsewhere fall back
-    # to GitHub-hosted. Safe on a self-hosted runner because the job-level `if`
-    # below limits it to Dependabot-authored PRs and it never checks out PR code.
-    runs-on: ${{ contains(fromJSON('["VlinderSoftware","vln-devsecops","vln-polaris","cpp4theselftaught"]'), github.repository_owner) && 'littlemonarch' || 'ubuntu-latest' }}
+    # littlemonarch-gate is only registered in these orgs; elsewhere fall back
+    # to GitHub-hosted. It is a dedicated runner, separate from the CI runner,
+    # because this job polls for sibling checks: on the shared single-slot
+    # CI runner it would occupy the slot those checks are queued for.
+    # Safe on a self-hosted runner because the job-level `if` below limits it
+    # to Dependabot-authored PRs and it never checks out PR code.
+    runs-on: ${{ contains(fromJSON('["VlinderSoftware","vln-devsecops","vln-polaris","cpp4theselftaught","vln-bookstore","vln-sneakyimmediatetapeworm","vln-coppice","rtimdb","rxmail-io"]'), github.repository_owner) && 'littlemonarch-gate' || 'ubuntu-latest' }}
     # The PR's author, not github.actor. github.actor is whoever triggered
     # the event, so on `reopened` - or when anyone else pushes to the branch -
     # it is that person, this condition goes false, and the job silently does
