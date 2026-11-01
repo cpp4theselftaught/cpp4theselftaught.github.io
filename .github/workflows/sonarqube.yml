@@ -11,6 +11,7 @@ jobs:
     permissions:
       contents: read
     with:
+      runner-type: littlemonarch
       baseline-branches: '["master"]'
 
   pr-scan:
@@ -21,3 +22,5 @@ jobs:
       checks: write
       pull-requests: write
       actions: read
+    with:
+      runner-type: ${{ github.event.pull_request.head.repo.full_name != github.repository && 'ubuntu-latest' || 'littlemonarch' }}
