@@ -13,8 +13,6 @@ permissions:
 jobs:
   build:
     runs-on: ${{ (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository) && 'ubuntu-latest' || 'littlemonarch' }}
-    env:
-      BUNDLE_PATH: vendor/bundle
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -34,6 +32,9 @@ jobs:
       # self-hosted runner, so a different bundler cannot be installed).
       - name: Repin bundler in this checkout only
         run: sed -i "/^BUNDLED WITH/,+1 s/2\.0\.2/$(bundle -v | awk '{print $NF}')/" Gemfile.lock
+
+      - name: Install gems outside the workspace (jekyll would scan vendor/)
+        run: echo "BUNDLE_PATH=$RUNNER_TEMP/bundle" >> "$GITHUB_ENV"
 
       - name: Install gems
         run: bundle install --jobs 4
