@@ -20,10 +20,10 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.2"
+          ruby-version: "3.3"
 
       # Gemfile.lock pins BUNDLED WITH 2.0.2, which is incompatible with
-      # Ruby 3.2 (uses String#untaint, removed in Ruby 3.0). bundle install
+      # Ruby 3.x (uses String#untaint, removed in Ruby 3.0). bundle install
       # re-reads that pin at runtime regardless of what's pre-installed, and
       # even `bundle lock` itself would trip the same error before it could
       # rewrite it - so patch the line directly, in this checkout only,
