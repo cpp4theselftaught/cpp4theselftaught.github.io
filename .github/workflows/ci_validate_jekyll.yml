@@ -27,12 +27,15 @@ jobs:
       # re-reads that pin at runtime regardless of what's pre-installed, and
       # even `bundle lock` itself would trip the same error before it could
       # rewrite it - so patch the line directly, in this checkout only,
-      # rather than touching the committed lockfile. 2.5.23 is the default
-      # bundler that ships with this Ruby version.
+      # rather than touching the committed lockfile. Pin to the bundler that
+      # ships with the installed Ruby (the toolcache is not writable on the
+      # self-hosted runner, so a different bundler cannot be installed).
       - name: Repin bundler in this checkout only
-        run: sed -i '/^BUNDLED WITH/,+1 s/2\.0\.2/2.5.23/' Gemfile.lock
+        run: sed -i "/^BUNDLED WITH/,+1 s/2\.0\.2/$(bundle -v | awk '{print $NF}')/" Gemfile.lock
 
       - name: Install gems
+        env:
+          BUNDLE_PATH: vendor/bundle
         run: bundle install --jobs 4
 
       - name: Build site
