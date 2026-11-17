@@ -1,48 +1,67 @@
 ---
 name: ci_dependabot_automerge
 
-# This file is maintained in vln-devsecops/guidance, which keeps two
-# byte-identical copies of it - one under .github/workflows/ and one under
+# This file is maintained in vln-devsecops/guidance, which keeps two identical
+# copies of it - one under .github/workflows/ and one under
 # scaffold/repository-compliance/.github/workflows/ - and fails CI if they
-# drift. Change it there, not in place, and read
-# runbooks/dependabot-automerge.md first: every piece of this workflow is
-# load-bearing and most of it is not obvious.
-
+# drift. Change it there, not in
+# place, and read runbooks/dependabot-automerge.md first: every piece of this
+# workflow is load-bearing and most of it is not obvious.
+#
+# Event-driven, not polling. Each time one of the repo's PR CI workflows
+# finishes, this workflow looks once at the PR head commit and either merges
+# it (everything else has already succeeded), defers (something is still
+# running - that workflow's own completion will trigger the next look), or
+# refuses (something failed). Nothing sits on a runner waiting for a queue.
+#
+# `workflows: ["*"]` listens to every workflow in the repo, so there is no
+# per-repo list to maintain. Verified in a scratch repo (2026-11-17): it fires
+# once per completed workflow and does not re-trigger on this workflow's own
+# completion. GitHub does not document wildcard support, so if it ever stops
+# working the symptom is this gate going silent (PRs left for a human), not a
+# wrong merge; the regression suite pins the "*" so a change is deliberate.
+# Completions that are not Dependabot PR runs are rejected by the job-level
+# `if` below without taking a runner.
 on:
-  pull_request_target:
-    types: [opened, synchronize, reopened]
+  workflow_run:
+    workflows: ["*"]
+    types: [completed]
 
 # Read-only. Every write this workflow performs - approving and merging - uses
 # a GitHub App installation token, not GITHUB_TOKEN, so GITHUB_TOKEN needs no
-# write scope. That matters more than usual here: the job runs under
-# pull_request_target, so a compromised step or action would otherwise hold a
-# repo-write token.
+# write scope. That matters more than usual here: the job runs with repository
+# secrets, so a compromised step or action would otherwise hold a repo-write
+# token.
 permissions:
   contents: read
   pull-requests: read
   checks: read
+  actions: read
+
+# One evaluation per commit at a time. Two CI workflows finishing together
+# would otherwise both reach the merge step. Never cancel: a queued evaluation
+# is the one that sees the final state.
+concurrency:
+  group: ci_dependabot_automerge-${{ github.event.workflow_run.head_sha }}
+  cancel-in-progress: false
 
 jobs:
   automerge:
     # littlemonarch-gate is only registered in these orgs; elsewhere fall back
     # to GitHub-hosted. It is a dedicated runner, separate from the CI runner,
-    # because this job polls for sibling checks: on the shared single-slot
-    # CI runner it would occupy the slot those checks are queued for.
+    # so the gate never queues behind the checks it is evaluating.
     # Safe on a self-hosted runner because the job-level `if` below limits it
-    # to Dependabot-authored PRs and it never checks out PR code.
+    # to Dependabot branches of this repository and it never checks out PR
+    # code.
     runs-on: ${{ contains(fromJSON('["VlinderSoftware","vln-devsecops","vln-polaris","cpp4theselftaught","vln-bookstore","vln-sneakyimmediatetapeworm","vln-coppice","rtimdb","rxmail-io"]'), github.repository_owner) && 'littlemonarch-gate' || 'ubuntu-latest' }}
-    # The PR's author, not github.actor. github.actor is whoever triggered
-    # the event, so on `reopened` - or when anyone else pushes to the branch -
-    # it is that person, this condition goes false, and the job silently does
-    # nothing on a real Dependabot PR. Nothing reports that; it just never
-    # merges.
-    #
-    # This deliberately does NOT decide whether a human has touched the
-    # branch. That is a separate question with a separate answer - see the
-    # commit-authorship check in the merge step - because the two were
-    # previously conflated here, and the accidental protection it gave was
-    # paid for by silent no-ops.
-    if: github.event.pull_request.user.login == 'dependabot[bot]'
+    # Cheap pre-filter so unrelated completions (pushes to main, human PRs)
+    # never start a job. It is not the security boundary: the `resolve` step
+    # re-checks the PR's author through the API, because a branch name is
+    # whatever its pusher chose.
+    if: >
+      github.event.workflow_run.head_repository.full_name == github.repository &&
+      contains(fromJSON('["pull_request","pull_request_target"]'), github.event.workflow_run.event) &&
+      startsWith(github.event.workflow_run.head_branch, 'dependabot/')
     steps:
       # Auto-merge is opt-in per repository, and *installing the App on the
       # repository* is what opts in. The App id and private key live at org
@@ -65,7 +84,7 @@ jobs:
       #
       # permission-* narrows the installation token to what this workflow
       # actually does. The App may be granted more; this token will not carry
-      # it, which matters because the job runs under pull_request_target.
+      # it.
       - name: Mint a GitHub App installation token
         id: app-token
         continue-on-error: true
@@ -90,12 +109,85 @@ jobs:
             runbooks/dependabot-automerge.md in vln-devsecops/guidance.
         run: echo "::notice::$MSG"
 
-      - name: Fetch Dependabot metadata
-        id: meta
+      # Which PR is this completion about? Resolved from the commit through
+      # the API rather than from the event payload: the payload's
+      # `pull_requests` array is empty for some PRs, and this job holds a
+      # privileged token. Only an open, same-repository PR authored by
+      # Dependabot whose head is still this commit qualifies. A closed PR, a
+      # human's PR, a fork, or a PR that has moved on to a newer commit (whose
+      # own completions will trigger their own evaluation) all end here.
+      - name: Find the Dependabot PR for this commit
+        id: resolve
         if: steps.app-token.outputs.token != ''
-        uses: dependabot/fetch-metadata@v3
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          set -euo pipefail
+
+          pr=$(gh api "repos/$REPO/commits/$SHA/pulls" --paginate --slurp \
+            | jq -c --arg sha "$SHA" --arg repo "$REPO" '
+                [ .[][]
+                  | select(.state == "open"
+                      and .head.sha == $sha
+                      and .head.repo.full_name == $repo
+                      and .user.login == "dependabot[bot]") ]
+                | first // empty')
+
+          if [ -z "$pr" ]; then
+            echo "::notice::No open Dependabot PR has $SHA as its head; nothing to do."
+            echo "number=" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "number=$(jq -r .number <<<"$pr")" >> "$GITHUB_OUTPUT"
+          echo "url=$(jq -r .html_url <<<"$pr")" >> "$GITHUB_OUTPUT"
+
+      # dependabot/fetch-metadata cannot be used here: it reads the
+      # `pull_request` event payload, which a workflow_run does not carry. This
+      # does the same thing it does - read the update-type lines from the
+      # metadata block Dependabot writes into its commit message - and refuses
+      # unless GitHub itself attributes the commit to Dependabot and has
+      # verified its signature. A commit message is only trustworthy as
+      # metadata when both hold; the authorship check in the merge step covers
+      # the rest of the branch.
+      - name: Classify the update
+        id: classify
+        if: >
+          steps.app-token.outputs.token != '' &&
+          steps.resolve.outputs.number != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          set -euo pipefail
+
+          commit=$(gh api "repos/$REPO/commits/$SHA")
+          login=$(jq -r '.author.login // ""' <<<"$commit")
+          verified=$(jq -r '.commit.verification.verified // false' <<<"$commit")
+
+          if [ "$login" != "dependabot[bot]" ] || [ "$verified" != "true" ]; then
+            echo "::notice::Head commit is not a verified Dependabot commit" \
+                 "(author '$login', verified=$verified); leaving the PR for a human."
+            echo "eligible=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          types=$(jq -r '.commit.message' <<<"$commit" | tr -d '\r' \
+            | sed -n 's/^[[:space:]]*update-type:[[:space:]]*//p')
+
+          # Every dependency in a group must be minor or patch; one major
+          # anywhere keeps the whole PR for a human. No metadata at all is
+          # not eligible either.
+          if [ -n "$types" ] \
+             && ! grep -qvxE 'version-update:semver-(minor|patch)' <<<"$types"; then
+            echo "eligible=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::notice::Not a minor/patch-only update; leaving the PR for a human."
+            echo "eligible=false" >> "$GITHUB_OUTPUT"
+          fi
 
       # `gh pr merge --auto` only actually waits for anything if the default
       # branch has a required status check configured via branch protection or
@@ -104,102 +196,83 @@ jobs:
       # required, `--auto` merges the moment it is invoked, regardless of
       # sibling jobs still running or already failed. That is what let
       # node-dashboard#37 merge past a failing `plan` job. This step gates on
-      # the commit's own check runs instead, so it fails closed on every plan
-      # tier and does not depend on branch-protection config staying correct.
-      - name: Wait for other checks on this commit
+      # the commit's own workflow runs and check runs instead, so it fails
+      # closed on every plan tier and does not depend on branch-protection
+      # config staying correct.
+      #
+      # Workflow runs are read as well as check runs because a workflow run
+      # exists the moment its event fires, whereas its check runs only appear
+      # once a runner picks the jobs up. A queued self-hosted job therefore
+      # shows up here as an unfinished run even before it has posted a single
+      # check - closing the window in which "nothing has failed yet" would
+      # otherwise look like success.
+      #
+      # `result` is merge (everything succeeded), wait (something is still
+      # running; its completion triggers the next evaluation) or blocked
+      # (something failed, or there was nothing to gate on).
+      - name: Evaluate the other checks on this commit
+        id: gate
         if: >
           steps.app-token.outputs.token != '' &&
-          (steps.meta.outputs.update-type == 'version-update:semver-minor' ||
-          steps.meta.outputs.update-type == 'version-update:semver-patch')
+          steps.resolve.outputs.number != '' &&
+          steps.classify.outputs.eligible == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
-          SHA: ${{ github.event.pull_request.head.sha }}
+          SHA: ${{ github.event.workflow_run.head_sha }}
           RUN_ID: ${{ github.run_id }}
         run: |
           set -euo pipefail
 
-          # How long to keep waiting while *no* sibling check has registered
-          # yet. A short fixed sleep is not enough: a queued Windows or
-          # self-hosted runner can take minutes to post its first check run,
-          # and "no checks yet" is indistinguishable from "this repo has no
-          # other CI". This window separates the two.
-          settle_seconds=180
-          # Overall bound once checks have appeared.
-          max_seconds=1800
-          interval=15
+          # --paginate emits one JSON document per page; --slurp collects them
+          # into a single array, so a commit with enough runs to paginate does
+          # not yield concatenated (invalid) JSON. This run is excluded by id
+          # for completeness; it reports against the default branch's commit,
+          # not the PR's, so it should never appear.
+          runs=$(gh api "repos/$REPO/actions/runs?head_sha=$SHA&per_page=100" \
+              --paginate --slurp \
+            | jq --arg run "$RUN_ID" \
+                '[.[] | .workflow_runs[] | select((.id | tostring) != $run)]')
+          checks=$(gh api "repos/$REPO/commits/$SHA/check-runs" --paginate --slurp \
+            | jq '[.[] | .check_runs[]]')
 
-          started=$SECONDS
-          while :; do
-            elapsed=$((SECONDS - started))
+          total=$(jq -n --argjson r "$runs" --argjson c "$checks" '($r + $c) | length')
+          if [ "$total" -eq 0 ]; then
+            # Fail closed. A commit with nothing on it has nothing for this
+            # gate to gate on, and merging anyway would be the original
+            # unguarded behaviour wearing a gate's name.
+            echo "No workflow runs or check runs found on $SHA. Refusing to" \
+                 "auto-merge: there is nothing gating this PR."
+            echo "result=blocked" >> "$GITHUB_OUTPUT"
+            exit 1
+          fi
 
-            # --paginate emits one JSON document per page; --slurp collects
-            # them into a single array, so a commit with enough check runs to
-            # paginate does not yield concatenated (invalid) JSON.
-            #
-            # Exclude every job of *this* workflow run rather than matching on
-            # a job name: this job's own check run is posted against the same
-            # head SHA, so without the exclusion it waits on itself until the
-            # timeout and blocks the merge forever. A name match only works
-            # while the job happens to be called "automerge"; details_url is
-            # .../actions/runs/<run_id>/job/<job_id>, which pins the run
-            # exactly and needs no extra token scope.
-            runs_json=$(gh api "repos/$REPO/commits/$SHA/check-runs" --paginate --slurp \
-              | jq --arg run "$RUN_ID" '[.[] | .check_runs[]
-                  | select(((.details_url // "")
-                      | contains("/actions/runs/" + $run + "/")) | not)]')
+          # Anything that is not success/skipped/neutral blocks the merge,
+          # including cancelled, timed_out, action_required and stale. A
+          # failure blocks immediately, even while other checks still run.
+          failed=$(jq -n --argjson r "$runs" --argjson c "$checks" '
+            [ ($r + $c)[]
+              | select(.status == "completed"
+                  and (.conclusion | IN("success", "skipped", "neutral") | not)) ]')
+          if [ "$(jq 'length' <<<"$failed")" -gt 0 ]; then
+            echo "Refusing to auto-merge; did not succeed:"
+            jq -r '.[] | "- \(.name): \(.conclusion)"' <<<"$failed"
+            echo "result=blocked" >> "$GITHUB_OUTPUT"
+            exit 1
+          fi
 
-            total=$(jq 'length' <<<"$runs_json")
-
-            if [ "$total" -eq 0 ]; then
-              if [ "$elapsed" -lt "$settle_seconds" ]; then
-                echo "No sibling check runs on $SHA yet (${elapsed}s elapsed), waiting..."
-                sleep "$interval"
-                continue
-              fi
-              # Fail closed. A repo with no check at all on a Dependabot PR
-              # has nothing for this gate to gate on, and merging anyway
-              # would be the original unguarded behaviour wearing a gate's
-              # name - the PR would look checked because this job went green.
-              #
-              # Auto-merge is only supposed to be enabled once a repo has at
-              # least one PR-triggered check (see
-              # runbooks/dependabot-automerge.md), so reaching this point
-              # means the repo is misconfigured. Say so, loudly, rather than
-              # merging and looking correct.
-              echo "No sibling check runs appeared on $SHA within" \
-                   "${settle_seconds}s. Refusing to auto-merge: there is" \
-                   "nothing gating this PR. Add a PR-triggered check, or" \
-                   "remove this workflow."
-              exit 1
-            fi
-
-            incomplete=$(jq '[.[] | select(.status != "completed")] | length' <<<"$runs_json")
-            if [ "$incomplete" -gt 0 ]; then
-              if [ "$elapsed" -ge "$max_seconds" ]; then
-                echo "Timed out after ${elapsed}s with $incomplete check(s) still running:"
-                jq -r '.[] | select(.status != "completed") | "- \(.name): \(.status)"' <<<"$runs_json"
-                exit 1
-              fi
-              echo "$incomplete of $total check(s) still running (${elapsed}s elapsed), waiting..."
-              sleep "$interval"
-              continue
-            fi
-
-            # Anything that is not success/skipped/neutral blocks the merge,
-            # including cancelled, timed_out, action_required and stale.
-            failed=$(jq '[.[] | select(.conclusion != "success"
-              and .conclusion != "skipped"
-              and .conclusion != "neutral")]' <<<"$runs_json")
-            if [ "$(jq 'length' <<<"$failed")" -gt 0 ]; then
-              echo "Refusing to auto-merge; check(s) did not succeed:"
-              jq -r '.[] | "- \(.name): \(.conclusion)"' <<<"$failed"
-              exit 1
-            fi
-
-            echo "All $total other check run(s) on $SHA succeeded."
+          pending=$(jq -n --argjson r "$runs" --argjson c "$checks" \
+            '[ ($r + $c)[] | select(.status != "completed") ]')
+          if [ "$(jq 'length' <<<"$pending")" -gt 0 ]; then
+            echo "Not merging yet; still running (its completion will trigger" \
+                 "the next evaluation):"
+            jq -r '.[] | "- \(.name): \(.status)"' <<<"$pending"
+            echo "result=wait" >> "$GITHUB_OUTPUT"
             exit 0
-          done
+          fi
+
+          echo "All $total other run(s) and check(s) on $SHA succeeded."
+          echo "result=merge" >> "$GITHUB_OUTPUT"
 
       # Approves with the App installation token only - see the minting step
       # above for why there is no GITHUB_TOKEN fallback.
@@ -209,33 +282,28 @@ jobs:
       # misleading audit trail for a control whose whole purpose is recording
       # who vouched for a change.
       #
-      # The trigger is pull_request_target, not pull_request, because a
-      # Dependabot PR running under pull_request cannot read Actions secrets -
-      # the private key would silently evaluate to empty there, and this
-      # workflow would then skip in every repo rather than only the
-      # uninstalled ones.
-      #
       # SECURITY: this job must never check out or execute PR head code.
-      # pull_request_target runs with repository secrets against the base
-      # branch; adding actions/checkout of the PR head here would expose those
-      # secrets to code from the PR branch.
+      # workflow_run runs with repository secrets against the default branch;
+      # adding actions/checkout of the PR head here would expose those secrets
+      # to code from the PR branch. It deliberately only calls `gh` and `jq`,
+      # and passes every piece of event data through `env`, never by
+      # interpolating it into a script.
       - name: Approve and merge minor/patch updates
+        id: merge
         if: >
           steps.app-token.outputs.token != '' &&
-          (steps.meta.outputs.update-type == 'version-update:semver-minor' ||
-          steps.meta.outputs.update-type == 'version-update:semver-patch')
+          steps.gate.outputs.result == 'merge'
         run: |
           set -euo pipefail
 
-          # The gate above validated $SHA, the head at the time this run
-          # started. If Dependabot has pushed since (a rebase, a follow-up
-          # bump), the PR now points at a commit this run never checked -
-          # and `gh pr merge --auto` applies to the PR, not to a SHA, so it
-          # would enable auto-merge for that unchecked head. Without a
-          # required status check there is nothing downstream to catch it.
+          # The gate validated $SHA, the head at the time this run started.
+          # If Dependabot has pushed since (a rebase, a follow-up bump), the
+          # PR now points at a commit this run never checked - and merging
+          # applies to the PR, not to a SHA. Without a required status check
+          # there is nothing downstream to catch it.
           #
-          # Bail out and let the run triggered by that newer commit do the
-          # gating. Exit 0, not 1: being superseded is normal, not a failure.
+          # Bail out and let the evaluation triggered by the newer commit do
+          # the gating. Exit 0, not 1: being superseded is normal.
           current=$(gh pr view "$PR_URL" --json headRefOid --jq .headRefOid)
           if [ "$current" != "$SHA" ]; then
             echo "PR head moved $SHA -> $current since this run started;" \
@@ -265,24 +333,15 @@ jobs:
           fi
 
           # Not `gh pr merge --auto`: that calls the GraphQL
-          # enablePullRequestAutoMerge mutation, and as of GitHub's
-          # undocumented 2026-03-25 behaviour change that mutation refuses to
-          # activate unless every check on the commit is already passing -
-          # including this job's own check run, which is still `in_progress`
-          # at this exact point because the job that would report it
-          # completed hasn't finished yet. That is a permanent, structural
-          # deadlock, not a race that clears on retry: it fails every time
-          # with "GraphQL: Pull request Pull request is in unstable status
-          # (enablePullRequestAutoMerge)" (see terraform-modules#203 for a
-          # concrete run of this).
-          #
-          # It is also unnecessary. `--auto` exists to wait for checks that
-          # are not yet green; the polling step above already did that
-          # waiting by hand. So merge directly instead of asking GitHub to
-          # enable a wait that has no reason to be running.
+          # enablePullRequestAutoMerge mutation, which since GitHub's
+          # undocumented 2026-03-25 behaviour change refuses to activate
+          # unless every check on the commit is already passing. It is also
+          # unnecessary - `--auto` exists to wait for checks that are not yet
+          # green, and the evaluation above already established that they are
+          # all green. So merge directly.
           gh pr review --approve "$PR_URL"
           gh pr merge --squash "$PR_URL"
         env:
-          PR_URL: ${{ github.event.pull_request.html_url }}
-          SHA: ${{ github.event.pull_request.head.sha }}
+          PR_URL: ${{ steps.resolve.outputs.url }}
+          SHA: ${{ github.event.workflow_run.head_sha }}
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
